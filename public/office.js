@@ -6,6 +6,8 @@ addCarForm.addEventListener('submit', (e) => {
     let yearInput = document.querySelector('#yearInput').value;
     let plateInput = document.querySelector('#plateInput').value;
     let colorInput = document.querySelector('#colorInput').value;
+    let seatsInput = document.querySelector('#seatsInput').value;
+    let transmissionInput = document.querySelector('#transmissionInput').value;
     let imageInput = document.querySelector('#imageInput').value;
 
     
@@ -15,6 +17,8 @@ addCarForm.addEventListener('submit', (e) => {
         year: yearInput,
         plate: plateInput,
         color: colorInput,
+        seats: seatsInput,
+        transmission: transmissionInput,
         image: imageInput
     }
     

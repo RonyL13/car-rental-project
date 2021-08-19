@@ -57,4 +57,8 @@ router.get('/logout', (req, res) => {
     res.redirect('/'); // Redirect the user to the home page after log out
 })
 
+router.put('/bookcar', authenticate, async (req, res) => {
+    const x = await myRepository.bookCar(req.body, req.cookies.jwt)
+    res.send(x);
+})
 module.exports = router;

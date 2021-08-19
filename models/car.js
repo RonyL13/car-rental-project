@@ -25,9 +25,35 @@ const carsSchema = new mongoose.Schema({
       type: String,
       required: [true, 'Missing field: Color']
    },
+   transmission: {
+      type: String,
+      required: [true, 'Missing field: Transmission']
+   },
    image: {
       type: String,
       required: [true, 'Missing field: image(source)']
+   },
+   seats: {
+      type: Number,
+      required: [true, 'Missing field: Seats']
+   },
+   booking: {
+      type: Object,
+      required: [true, 'Missing field: booking'],
+      default: {
+         isBooked: false,
+         by: null
+      },
+      isBooked: {
+         type: Boolean,
+         required: [true, 'Missing field: isBooked'],
+         default: false
+      },
+      by: {
+         type: String,
+         required: [true, 'Missing field: (isBooked) by'],
+         default: null
+      }
    }
 
 
@@ -35,4 +61,3 @@ const carsSchema = new mongoose.Schema({
 
  module.exports.Car = mongoose.model('Car', carsSchema);
 
- // Add amount of seats, transmission type.

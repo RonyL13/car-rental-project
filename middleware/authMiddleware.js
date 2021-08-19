@@ -6,7 +6,6 @@ const Customer = customerModel.Customer;
 const authenticate = (req, res, next) => {
     const token = req.cookies.jwt;
 
-
     // Check if json web token exists and is verified
     if (token) {
         jwt.verify(token, 'rental project secret', (err, decodedToken) => {
@@ -14,12 +13,17 @@ const authenticate = (req, res, next) => {
                 console.log(err.message);
                 res.redirect('/login');
             } else {
-                console.log(decodedToken);
+                // console.log(decodedToken);
                 next();
             }
         })
     } else {
-        res.redirect('/login')
+        // Determines whether the request is GET or POST and returns the desired response accordingly
+        if(req.method !== 'GET') {  
+            res.send(false)
+        } else {
+            res.redirect('/login') 
+        }
     }
 }
 
@@ -28,7 +32,7 @@ const authenticate = (req, res, next) => {
 const checkUser = (req, res, next) => {
     const token = req.cookies.jwt;
 
-    if(token) {
+    if (token) {
         jwt.verify(token, 'rental project secret', async (err, decodedToken) => {
             if (err) {
                 console.log(err.message);
@@ -36,7 +40,7 @@ const checkUser = (req, res, next) => {
                 next();
             } else {
                 console.log(decodedToken);
-                let customer =  await Customer.findById(decodedToken.id)
+                let customer = await Customer.findById(decodedToken.id)
                 res.locals.customer = customer;
                 next();
             }

@@ -34,14 +34,15 @@ searchForm.addEventListener('submit', (e) => {
             // Creation of the result component and appending it to the results gallery
             let carComponent = '';
             for (let i = 0; i < data.length; i++) {
-            carComponent += `<div>
+            carComponent += `<div >
                                 <img src="${data[i]['image']}">
                                 <p>Manufacturer: ${data[i]['manufacturer']}</p>
                                 <p>Model: ${data[i]['model']}</p>
                                 <p>Year: ${data[i]['year']}</p>
+                                <p>Transmission: ${data[i]['transmission']}</p>
                                 <p>Color: ${data[i]['color']}</p>
-                                <button>Book</button>
-                                </div>`
+                                <button class="bookBtn" index="${data[i]['_id']}" onClick="bookCar(this)">Book</button>
+                            </div>`
             }
             document.querySelector('#resultsContainer').innerHTML = carComponent;
 
@@ -59,3 +60,27 @@ searchForm.addEventListener('submit', (e) => {
 })
 
 
+bookCar = (index) => {
+
+    // Every car component is created with a button whose "index" attribute corresponds to the car's database _Id
+    let carId = { id: index.getAttribute('index') };
+    fetch('http://localhost:5000/bookcar', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(carId)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (!data) {        // In case the user isn't logged in data should be false therefore we check if !data
+            location.assign('/login')
+        } else {
+            console.log(data);
+        }
+    })
+    .catch((err) => {
+        console.log(`An error occured while attempting to fetch: ${err}`);
+    })
+    
+}

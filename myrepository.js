@@ -69,6 +69,25 @@ module.exports = {
             console.log(`An error occured while attempting to login: ${err}`);
             return err;
         }
+    },
+
+    async bookCar(carId, customerToken) {
+       
+        // Grab the customer database ID and store it in a variable
+        let customerId = jwt.verify(customerToken, 'rental project secret', (err, decodedToken) => {
+            return decodedToken.id; 
+        })
+        const carResult = await Car.findById(carId.id);
+
+        carResult['booking'] = {
+            isBooked: true,
+            by: customerId
+        }
+
+        const x = await carResult.save();
+
+        console.log(x);
+        return x;
     }
 }
 

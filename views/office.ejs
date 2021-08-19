@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+
+<body>
+    <p>Add a Car:</p>
+    <form id="addCarForm">
+        <div>
+            <label for="">Manufacturer</label>
+            <input type="text" name="" id="manufacturerInput" required>
+        </div>
+        <div>
+            <label for="">Model</label>
+            <input type="text" name="" id="modelInput" required>
+        </div>
+        <div>
+            <label for="">Year</label>
+            <input type="number" name="" id="yearInput" required>
+        </div>
+        <div>
+            <label for="">Plate</label>
+            <input type="text" name="" id="plateInput" required>
+        </div>
+        <div>
+            <label for="">Color</label>
+            <input type="text" name="" id="colorInput" required>
+        </div>
+        <div>
+            <label for="">Image Source</label>
+            <input type="text" name="" id="imageInput" required>
+        </div>
+        <button type="submit">Add</button>
+    </form>
+    <script src="office.js"></script>
+</body>
+</html>

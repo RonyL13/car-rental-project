@@ -12,7 +12,7 @@ const carsSchema = new mongoose.Schema({
    year: {
       type: Number,
       min: 1920,
-      max: 2021,
+      max: new Date().getFullYear(),
       required: [true, 'Missing field: Year']
    },
    plate: {

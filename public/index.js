@@ -1,4 +1,4 @@
-let searchForm = document.querySelector('#searchForm');
+let searchForm = document.querySelector('.searchForm');
 
 
 // Helper functions
@@ -112,8 +112,20 @@ searchForm.addEventListener('submit', (e) => {
                                 
                         }
                     }
-
+                    
                     document.querySelector('#resultsContainer').innerHTML = carComponent;
+
+                    showUnavailable = () => {
+                        let showUnavailable = document.querySelector('.showUnavailable');
+                        let unavailableCars = document.querySelectorAll('.booked')
+
+                        if (showUnavailable.checked) {
+                            unavailableCars.forEach(car => car.style.display = 'block')
+                        } else {
+                            unavailableCars.forEach(car => car.style.display = 'none')
+                        }
+                    }
+                    showUnavailable();
                     location.assign('#resultsContainer') // Scroll the user down to results
                 } else {
                     // If no cars are found
@@ -163,20 +175,6 @@ bookCar = (index, from, to) => {
         })
 
 }
-
-
-showUnavailable = () => {
-    let unavailableCars = document.querySelectorAll('.booked')
-    unavailableCars.forEach(car => car.style.display = 'block')
-}
-
-hideUnavailable = () => {
-    let unavailableCars = document.querySelectorAll('.booked')
-    unavailableCars.forEach(car => car.style.display = 'none')
-}
-
-
-
 
 
 

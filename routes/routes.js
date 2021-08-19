@@ -24,7 +24,7 @@ router.post('/register', async (req, res) => {
 
 router.post('/addcar', isAdmin, async (req, res) => {
     const x = await myRepository.createCar(req.body);
-    res.send(`added new car ${x} successfully`)
+    res.send(x)
 })
 
 // router.get('/getcars', async (req, res) => {
@@ -72,6 +72,11 @@ router.post('/statistics', async (req, res) => {
 
 router.delete('/deletecar', async (req, res) => {
     let x = await myRepository.deleteCar(req.body);
+    res.send(x);
+})
+
+router.delete('/deletecustomer', async (req, res) => {
+    let x = await myRepository.deleteCustomer(req.body);
     res.send(x);
 })
 module.exports = router;

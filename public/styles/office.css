@@ -25,14 +25,18 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5%;
 }
-
+.addCarFormContainer {
+    width: 20rem;
+}
 #addCarForm {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: solid black 1px;
     border-radius: 5%;
     padding: 10px;
-    width: 25%;
-    margin-left: 5%;
+}
+
+.addCarErrorContainer {
+    color: magenta;
 }
 
 
@@ -59,26 +63,48 @@ body {
     width: 100%;
 }
 
-.addFormsContainer {
-    display: flex;
-    padding: 20px;
-}
 
-.addFormsContainer h1{
-    margin-left: 50%;
-    margin-top: 5%;
-}
-
-.deleteFormsContainer {
+.deleteContainer {
     background-color: rgb(231, 231, 231);
     padding: 20px;
+    display: flex;
+    align-items: center;
 }
 
-.deleteCarForm {
+
+.deleteFormsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.deleteCarFormContainer {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: solid black 1px;
     border-radius: 5%;
     padding: 10px;
-    width: 25%;
-    margin-left: 5%;
+    width: 20rem;
+    height: 9rem;
+}
+
+
+.deleteCustomerFormContainer {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: solid black 1px;
+    border-radius: 5%;
+    padding: 10px;
+    width: 20rem;
+    height: 9rem;
+    margin-left: 10%;
+}
+
+.failure {
+    color: #D8000C;
+    background-color: #FFD2D2;
+}
+
+.success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
 }

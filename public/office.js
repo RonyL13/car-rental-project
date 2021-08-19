@@ -11,8 +11,15 @@ addCarForm.addEventListener('submit', (e) => {
     let transmissionInput = document.querySelector('#transmissionInput').value;
     let imageInput = document.querySelector('#imageInput').value;
 
+    let errors = [];
+    let errorElement = document.querySelector('.addCarErrorContainer')
 
-    
+    if (yearInput < 1920 || yearInput > new Date().getFullYear()) {
+        errors.push(`Year must be between 1920 and ${new Date().getFullYear()}`)
+    }
+    if (errors.length > 0) {
+        errorElement.innerText = errors.join('\n')
+    } else {
     let info = {
         manufacturer: manufacturerInput,
         model: modelInput,
@@ -33,18 +40,29 @@ addCarForm.addEventListener('submit', (e) => {
             },
             body: JSON.stringify(info)
         })
-    .catch((err) => {
-        `An error occured while attempting to fetch: ${err}`
-    })
-});
+        .then(response => response.json())
+        .then(data => {
+            let resultDiv = document.querySelector('.addCarResultDiv');
+            resultDiv.innerHTML = ''; // Resetting the error/success div each time this function is called
+            let str = '';
+            if (data.msg === `Added new car successfully`) {
+                str += `<div class="success">${data.msg}</div>`
+            } else {
+                str += `<div class="failure">${data.msg}</div>`
+            }
+            resultDiv.innerHTML = str;
+        })
+        .catch((err) => {
+            `An error occured while attempting to fetch: ${err}`
+        })
+}});
 
     
 fetch('http://localhost:5000/statistics', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
-        }//,
-        //body: JSON.stringify()
+        }
     })
     .then(response => response.json())
     .then(data => {
@@ -79,7 +97,46 @@ fetch('http://localhost:5000/statistics', {
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            let resultDiv = document.querySelector('.deleteCarResultDiv');
+            resultDiv.innerHTML = ''; // Resetting the error/success div each time this function is called
+            let str = '';
+            if (data.deletedCount === 0 || data.message) { // Check whether we got an error message or if mongoose didnt delete a record
+                str += `<div class="failure">Record does not exists or has already been deleted</div>`
+            } else {
+                str += `<div class="success">Car successfully deleted</div>`
+            }
+            resultDiv.innerHTML = str;
+        })
+        .catch((err) => {
+            `An error occured while attempting to fetch: ${err}`
+        })
+    })
+
+    let deleteCustomerForm = document.querySelector('.deleteCustomerForm')
+    deleteCustomerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        let deleteInput = document.querySelector('#deleteCustomerInput').value;
+
+        fetch('http://localhost:5000/deletecustomer', {
+        
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({deleteInput})
+        })
+        .then(response => response.json())
+        .then(data => {
+            let resultDiv = document.querySelector('.deleteCustomerResultDiv');
+            resultDiv.innerHTML = ''; // Resetting the error/success div each time this function is called
+            let str = '';
+            if (data.deletedCount === 0 || data.message) { // Check whether we got an error message or if mongoose didnt delete a record
+                str += `<div class="failure">Record does not exist or has already been deleted</div>`
+            } else {
+                str += `<div class="success">Customer successfully deleted</div>`
+            }
+            resultDiv.innerHTML = str;
         })
         .catch((err) => {
             `An error occured while attempting to fetch: ${err}`

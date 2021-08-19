@@ -42,9 +42,15 @@ module.exports = {
 
     // This function adds a new car to database
     async createCar(carInfo) {
-        const newCar = new Car(carInfo);
-        const x = await newCar.save();
-        return (`registered new car with id ${x._id}`);
+        try {
+            const newCar = new Car(carInfo);
+            const x = await newCar.save();
+            return {msg: `Added new car successfully`};
+        }
+        catch(err) {
+            console.log(err);
+            return {msg: `${Object.keys(err.keyValue)} number ${Object.values(err.keyValue)} already exists`};
+        }
     },
 
     // This function returns all cars in database
@@ -187,6 +193,20 @@ module.exports = {
         }
         catch(err) {
             console.log(err);
+            return err;
+        }
+    },
+
+    async deleteCustomer(info) {
+        try {
+            let customerId = info.deleteInput
+            let deleted = await Customer.deleteOne({_id: customerId})
+            console.log(deleted);
+            return deleted;
+        }
+        catch(err) {
+            console.log(err);
+            return err;
         }
     }
 }

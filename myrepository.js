@@ -104,6 +104,7 @@ module.exports = {
                     to: info['to']
                 })
 
+
                 // Calculate the number of days between the requested dates
                 let daydifference = (date1, date2) => {
                     let firstDate = new Date(`${date1}`)
@@ -121,6 +122,8 @@ module.exports = {
                     days: daydifference(info['from'], info['to']) + 1,  // Adding 1 to the result since a date minus itself returns 0 when effectively its 1 day.
                     totalPrice: (daydifference(info['from'], info['to']) + 1) * carResult['price']
                 }
+
+
                 // Saving our new order
                  const newOrder = await new Order(order)
                  const y =  await newOrder.save()
@@ -288,7 +291,25 @@ module.exports = {
 
     async deleteOrder(orderId) {
         try {
+            // Finding the requested order and car for cancellation
+            let order = await Order.findById(orderId.id)
+            let carOrdered = await Car.findById(order['car'])
+
+            // Deleting the order
             let deleted = await Order.deleteOne({_id: orderId.id})
+
+            // Since the booking did not come to pass we reduce the timesBooked field
+            carOrdered['timesBooked']--;
+   
+            // Removing the booking from the car document bookings 
+            for (let i = 0; i < carOrdered['bookings'].length; i++) {
+                if (order['from'] == carOrdered['bookings'][i]['from']) {
+                    carOrdered['bookings'].splice(i, 1);
+                }
+            }
+            // Saving the car document after changes
+            let x = await carOrdered.save();
+
             return ({msg: 'Order Successfully Deleted'})
         }
         catch(err) {

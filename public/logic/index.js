@@ -167,7 +167,7 @@ bookCar = (index, from, to) => {
             } else {
                 console.log(data);
                 index.disabled = true;
-                location.assign(`/purchase?id=${carId}`)
+                location.assign(`/profile`)
             }
         })
         .catch((err) => {

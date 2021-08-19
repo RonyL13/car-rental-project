@@ -10,10 +10,10 @@ const orderSchema = new mongoose.Schema({
         required: [true, 'Missing field: carId']
     },
     from: {
-        type: Date
+        type: String
     },
     to: {
-        type: Date,
+        type: String,
     },
     days: {
         type: Number,

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./components/head.ejs') %>
+    <link rel="stylesheet" href="styles/faq.css">
+<body>
+    <%- include('./components/navbar.ejs') %>
+    <section>
+        <div class="mainContainer">
+            <h2>Frequently Asked Questions</h2>
+            <div class="accordion">
+                <h3>General</h3>
+                <div class="accordion-item" id="question1">
+                    <span onclick="toggleCard(this.parentElement)" class="accordion-link">
+                        What services do you offer?
+                        <ion-icon name="add-outline" class="plus-icon"></ion-icon>
+                        <ion-icon name="remove-outline" class="minus-icon"></ion-icon>
+                    </span>
+                    <div class="answer">
+                        <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto aliquam culpa repellat cumque accusamus! Quae officia quod expedita obcaecati! Est harum, molestiae ipsa temporibus perferendis nostrum ea facere itaque quidem.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-item" id="question2">
+                    <span onclick="toggleCard(this.parentElement)" class="accordion-link">
+                        Where are you stationed?
+                        <ion-icon name="add-outline" class="plus-icon"></ion-icon>
+                        <ion-icon name="remove-outline" class="minus-icon"></ion-icon>
+                    </span>
+                    <div class="answer">
+                        <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto aliquam culpa repellat cumque accusamus! Quae officia quod expedita obcaecati! Est harum, molestiae ipsa temporibus perferendis nostrum ea facere itaque quidem.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-item" id="question3">
+                    <span onclick="toggleCard(this.parentElement)" class="accordion-link">
+                        Do I have to register to your website in order to use your services?
+                        <ion-icon name="add-outline" class="plus-icon"></ion-icon>
+                        <ion-icon name="remove-outline" class="minus-icon"></ion-icon>
+                    </span>
+                    <div class="answer">
+                        <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto aliquam culpa repellat cumque accusamus! Quae officia quod expedita obcaecati! Est harum, molestiae ipsa temporibus perferendis nostrum ea facere itaque quidem.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-item" id="question3">
+                    <span onclick="toggleCard(this.parentElement)" class="accordion-link">
+                        How do I register to your website?
+                        <ion-icon name="add-outline" class="plus-icon"></ion-icon>
+                        <ion-icon name="remove-outline" class="minus-icon"></ion-icon>
+                    </span>
+                    <div class="answer">
+                        <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto aliquam culpa repellat cumque accusamus! Quae officia quod expedita obcaecati! Est harum, molestiae ipsa temporibus perferendis nostrum ea facere itaque quidem.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-item" id="question3">
+                    <span onclick="toggleCard(this.parentElement)" class="accordion-link">
+                        Do you have a mobile app?
+                        <ion-icon name="add-outline" class="plus-icon"></ion-icon>
+                        <ion-icon name="remove-outline" class="minus-icon"></ion-icon>
+                    </span>
+                    <div class="answer">
+                        <p>
+                        As of today, our company does not employ a mobile application. We may look into that option in the near future.
+                        </p>
+                    </div>
+                </div>
+                <h3>Pricing</h3>
+                <div class="accordion-item" id="question4">
+                    <span onclick="toggleCard(this.parentElement)" class="accordion-link">
+                        this is question 4 for now?
+                        <ion-icon name="add-outline" class="plus-icon"></ion-icon>
+                        <ion-icon name="remove-outline" class="minus-icon"></ion-icon>
+                    </span>
+                    <div class="answer">
+                        <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto aliquam culpa repellat cumque accusamus! Quae officia quod expedita obcaecati! Est harum, molestiae ipsa temporibus perferendis nostrum ea facere itaque quidem.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-item" id="question5">
+                    <span onclick="toggleCard(this.parentElement)" class="accordion-link">
+                        Do I have to register to your website in order to use your services?
+                        <ion-icon name="add-outline" class="plus-icon"></ion-icon>
+                        <ion-icon name="remove-outline" class="minus-icon"></ion-icon>
+                    </span>
+                    <div class="answer">
+                        <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto aliquam culpa repellat cumque accusamus! Quae officia quod expedita obcaecati! Est harum, molestiae ipsa temporibus perferendis nostrum ea facere itaque quidem.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-item" id="question6">
+                    <span onclick="toggleCard(this.parentElement)" class="accordion-link">
+                        What are your refund policies?
+                        <ion-icon name="add-outline"></ion-icon>
+                        <ion-icon name="remove-outline" class="minus-icon"></ion-icon>
+                    </span>
+                    <div class="answer">
+                        <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto aliquam culpa repellat cumque accusamus! Quae officia quod expedita obcaecati! Est harum, molestiae ipsa temporibus perferendis nostrum ea facere itaque quidem.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <%- include('./components/footer.ejs') %>
+
+    <!-- icons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="logic/faq.js"></script>
+</body>
+</html>

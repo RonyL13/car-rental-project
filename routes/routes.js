@@ -37,7 +37,9 @@ router.get('/views/images/abstractdarkbackground.jpeg', (req, res) => {
     res.sendFile(path.join(__dirname+'/../views/images/abstractdarkbackground.jpeg'))
 })
 
-
+router.get('/faq', (req, res) => {
+    res.render('faq', { title : 'FAQ'})
+})
 
 router.get('/register', (req, res) => {
     res.render('register', { title: 'Register' })

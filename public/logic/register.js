@@ -18,19 +18,22 @@ form.addEventListener('submit', (e) => {
 
 
     if (name.length > 20 || name.length < 4) {
-        errors.push('Name must be between 4 and 20 characters long')
+        errors.push('* Name must be between 4 and 20 characters long')
     }
 
     if (password !== confirm) {
-        errors.push('Passwords do not match')
+        errors.push('* Passwords do not match')
     }
 
     if (password.length < 6 || password.length > 20) {
-        errors.push('Password must be between 6 and 20 characters long')
+        errors.push('* Password must be between 6 and 20 characters long')
     }
-
-
-    
+    if (phone.length !== 10) {
+        errors.push('* Phone must be 10 digits long')
+    }
+    if (dl.length !== 7) {
+        errors.push("* Driver's License must be 7 characters long")
+    }
 
     if (errors.length > 0) {
         errorElement.innerText = errors.join('\n')
@@ -64,10 +67,10 @@ form.addEventListener('submit', (e) => {
                 if (data.err.errors.email) { // If email validation error occured
                     alert(data.err.errors.email.message);
                 }
-                if (data.err.errors.phone) { // If email validation error occured
+                if (data.err.errors.phone) { // If phone validation error occured
                     alert(data.err.errors.phone.message);
                 }
-                if (data.err.errors.dl) { // If email validation error occured
+                if (data.err.errors.dl) { // If dl validation error occured
                     alert(data.err.errors.dl.message);
                 }
             }

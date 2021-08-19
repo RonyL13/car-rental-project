@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('./partials/head.ejs') %>
+<%- include('./components/head.ejs') %>
     <link rel="stylesheet" href="styles/profile.css">
 
     <body>
-        <%- include('./partials/navbar.ejs') %>
+        <%- include('./components/navbar.ejs') %>
 
             <div class="personalInfoContainer">
                 <% if (customer) { %>
@@ -47,7 +47,7 @@
                 <div class="sideMenuContainer"></div>
                 <div class="ordersContainer"></div>
             </div>
-            <%- include('./partials/footer.ejs') %>
+            <%- include('./components/footer.ejs') %>
                 <script src="logic/profile.js"></script>
     </body>
 

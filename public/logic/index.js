@@ -99,6 +99,7 @@ searchForm.addEventListener('submit', (e) => {
                                 <p>Year: ${data[i]['year']}</p>
                                 <p>Transmission: ${data[i]['transmission']}</p>
                                 <p>Color: ${data[i]['color']}</p>
+                                <p>Seats: ${data[i]['seats']}</p>
                                 <p>Price per day: ${data[i]['price']} &#8362</p>
                                 <p class="currUnavailable">Unavailable at requested dates</p>
                                 </div>`
@@ -110,6 +111,7 @@ searchForm.addEventListener('submit', (e) => {
                                 <p>Year: ${data[i]['year']}</p>
                                 <p>Transmission: ${data[i]['transmission']}</p>
                                 <p>Color: ${data[i]['color']}</p>
+                                <p>Seats: ${data[i]['seats']}</p>
                                 <p>Price per day: ${data[i]['price']} &#8362</p>
                                 <button class="bookBtn" index="${data[i]['_id']}" onClick="bookCar(this, '${fromInput}', '${toInput}')">Book</button>
                                 </div>`

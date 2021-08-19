@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('./partials/head.ejs') %>
+<%- include('./components/head.ejs') %>
     <link rel="stylesheet" href="styles/index.css">
 
     <body>
         <div class="headerContainer">
             <header>
-                <%- include('./partials/navbar.ejs') %>
+                <%- include('./components/navbar.ejs') %>
             </header>
         </div>
 
@@ -52,7 +52,7 @@
                     <div class="labelPlusInputContainer">
                         <label for="">Transmission</label>
                         <select type="text" name="" id="transmissionInput">
-                            <option value="">Select</option>
+                            <option value="">Any</option>
                             <option value="Manual">Manual</option>
                             <option value="Automatic">Automatic</option>
                         </select>
@@ -76,7 +76,7 @@
         </div>
         <div id="resultsContainer"></div>
     </div>
-        <%- include('./partials/footer.ejs') %>
+        <%- include('./components/footer.ejs') %>
             <script src="logic/index.js"></script>
     </body>
 

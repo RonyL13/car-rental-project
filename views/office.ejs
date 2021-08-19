@@ -5,16 +5,15 @@
 <body>
     <%- include('./partials/navbar.ejs') %>
     <div class="sideMenu">
-        <a href="">Add</a>
+        <a href="#addFormsContainer">Add</a>
         <a href="">Update</a>
-        <a href="">Delete</a>
-        <a href=""></a>
+        <a href="#deleteFormsContainer">Delete</a>
     </div>
     <div class="statisticsContainer"></div>
-    <div class="addFormsContainer">
+    <div id="addFormsContainer" class="addFormsContainer">
         <div class="addCarFormContainer">
             <form id="addCarForm">
-                <h2>Add a Car:</h2>
+                <h2 class="formTitle">Add a Car:</h2>
                 <div class="labelPlusInputContainer">
                     <label for="">Manufacturer</label>
                     <input type="text" name="" id="manufacturerInput" required>
@@ -58,10 +57,93 @@
                 <div class="addCarErrorContainer"></div>
                 <button type="submit" class="submitBtn">Add</button>
             </form>
+        </div>
+        <div class="addCustomerFormContainer">
+            <form class="addCustomerForm">
+                <h2 class="formTitle">Add a Customer</h2>
+                <div class="labelPlusInputContainer">
+                    <label for="name">Full name</label>
+                    <input type="text" name="name" id="nameId" required>
+                </div>
+                <div class="labelPlusInputContainer">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="passwordId" required>
+                </div>
+                <div class="labelPlusInputContainer">
+                    <label for="">Confirm password</label>
+                    <input type="password" id="confirmId" required>
+                </div>
+                <div class="labelPlusInputContainer">
+                    <label for="">Email address</label>
+                    <input type="email" name="email" id="emailId" required> 
+                </div>
+                <div class="labelPlusInputContainer">
+                    <label for="">Phone number</label>
+                    <input type="text" name="phone" id="phoneId" required>
+                </div>
+                <div class="labelPlusInputContainer">
+                    <label for="">Driver's license</label>
+                    <input type="text" name="dl" id="dlId" required>
+                </div>
+                <div class="labelPlusInputContainer">
+                    <label for="">Gender</label>
+                    <select name="" id="genderId">
+                        <option value="male">male</option>
+                        <option value="female">female</option>
+                        <option value="other">other</option>
+                    </select>
+                </div>
+                <div class="addCustomerErrorContainer"></div>
+                <div class="submitContainer">
+                    <button class="submitBtn" type="submit">Add</button>
+                </div>
+            </form>
+        </div>
+        <div class="addAdminFormContainer">
+            <form class="addAdminForm">
+                <h2>Add Admin</h2>
+                <div class="labelPlusInputContainer">
+                    <label for="adminName">Full name</label>
+                    <input type="text" name="adminName" id="adminNameInput" required>
+                </div>
+                <div class="labelPlusInputContainer">
+                    <label for="adminPassword">Password</label>
+                    <input type="password" name="adminPassword" id="adminPasswordInput" required>
+                </div>
+                <div class="labelPlusInputContainer">
+                    <label for="adminConfirm">Confirm password</label>
+                    <input type="password" name="adminConfirm" id="adminConfirmInput" required>
+                </div>
+                <div class="labelPlusInputContainer">
+                    <label for="adminEmail">Email address</label>
+                    <input type="email" name="adminEmail" id="adminEmailInput" required> 
+                </div>
+                <div class="labelPlusInputContainer">
+                    <label for="adminPhone">Phone number</label>
+                    <input type="text" name="adminPhone" id="adminPhoneInput" required>
+                </div>
+                <div class="labelPlusInputContainer">
+                    <label for="adminDl">Driver's License</label>
+                    <input type="text" name="adminDl" id="adminDlInput" required>
+                </div>
+                <div class="labelPlusInputContainer">
+                    <label for="">Gender</label>
+                    <select name="" id="adminGenderInput">
+                        <option value="male">male</option>
+                        <option value="female">female</option>
+                        <option value="other">other</option>
+                    </select>
+                </div>
+                <div class="adminResultDiv"></div>
+                <div class="adminErrorElement"></div>
+                <button class="submitBtn" type="submit">Add</button>
+            </form>
+        </div>
+        <div class="addTitle">
+            <h1>ADD</h1>
+        </div>
     </div>
-    <h1>Add</h1>
-</div>
-<div class="deleteContainer">
+<div id="deleteFormsContainer" class="deleteContainer">
     <h1>DELETE</h1>
     <div class="deleteFormsContainer">
         <div class="deleteCarFormContainer">
@@ -90,6 +172,7 @@
 </div>
     
     <script src="office.js"></script>
+    <script src="/register.js"></script>
 
     <%- include('./partials/footer.ejs') %>
 </body>

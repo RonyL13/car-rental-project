@@ -79,4 +79,9 @@ router.delete('/deletecustomer', async (req, res) => {
     let x = await myRepository.deleteCustomer(req.body);
     res.send(x);
 })
+
+router.post('/addadmin', async (req, res) => {
+    let x = await myRepository.createAdmin(req.body);
+    res.send(x);
+})
 module.exports = router;

@@ -25,20 +25,66 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5%;
 }
+
+/* =============================================================== */
+.addTitle {
+    margin-left: 3%;
+}
+.addFormsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.addCustomerFormContainer {
+    width: 20rem;
+    height: 30rem;
+    margin-left: 3%;
+}
+.addCustomerForm {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: solid black 1px;
+    border-radius: 5%;
+    padding: 10px;
+    height: 100%;
+}
+.addCustomerForm input{
+    margin-bottom: 10px;
+}
+
 .addCarFormContainer {
     width: 20rem;
+    height: 30rem;
+    margin-left: 3%;
 }
 #addCarForm {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: solid black 1px;
     border-radius: 5%;
     padding: 10px;
+    height: 100%;
+}
+.addAdminFormContainer {
+    width: 20rem;
+    height: 30rem;
+    margin-left: 3%;
+}
+.addAdminForm {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: solid black 1px;
+    border-radius: 5%;
+    padding: 10px;
+    height: 100%;
+}
+
+.addCustomerErrorContainer {
+    color: magenta;
 }
 
 .addCarErrorContainer {
     color: magenta;
 }
-
 
 .submitBtn {
     background-color: rgb(248, 218, 98);
@@ -51,7 +97,7 @@ body {
     cursor: pointer;
 }
 
-#addCarForm h2 {
+.formTitle {
     padding: 2px;
 }
 
@@ -63,6 +109,8 @@ body {
     width: 100%;
 }
 
+
+/* ===================================================== */
 
 .deleteContainer {
     background-color: rgb(231, 231, 231);

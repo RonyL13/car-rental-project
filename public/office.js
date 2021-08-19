@@ -20,50 +20,51 @@ addCarForm.addEventListener('submit', (e) => {
     if (errors.length > 0) {
         errorElement.innerText = errors.join('\n')
     } else {
-    let info = {
-        manufacturer: manufacturerInput,
-        model: modelInput,
-        year: yearInput,
-        plate: plateInput,
-        color: colorInput,
-        seats: seatsInput,
-        price: priceInput,
-        transmission: transmissionInput,
-        image: imageInput
-    }
-    
-    fetch('http://localhost:5000/addcar', {
-        
+        let info = {
+            manufacturer: manufacturerInput,
+            model: modelInput,
+            year: yearInput,
+            plate: plateInput,
+            color: colorInput,
+            seats: seatsInput,
+            price: priceInput,
+            transmission: transmissionInput,
+            image: imageInput
+        }
+
+        fetch('http://localhost:5000/addcar', {
+
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(info)
         })
-        .then(response => response.json())
-        .then(data => {
-            let resultDiv = document.querySelector('.addCarResultDiv');
-            resultDiv.innerHTML = ''; // Resetting the error/success div each time this function is called
-            let str = '';
-            if (data.msg === `Added new car successfully`) {
-                str += `<div class="success">${data.msg}</div>`
-            } else {
-                str += `<div class="failure">${data.msg}</div>`
-            }
-            resultDiv.innerHTML = str;
-        })
-        .catch((err) => {
-            `An error occured while attempting to fetch: ${err}`
-        })
-}});
+            .then(response => response.json())
+            .then(data => {
+                let resultDiv = document.querySelector('.addCarResultDiv');
+                resultDiv.innerHTML = ''; // Resetting the error/success div each time this function is called
+                let str = '';
+                if (data.msg === `Added new car successfully`) {
+                    str += `<div class="success">${data.msg}</div>`
+                } else {
+                    str += `<div class="failure">${data.msg}</div>`
+                }
+                resultDiv.innerHTML = str;
+            })
+            .catch((err) => {
+                `An error occured while attempting to fetch: ${err}`
+            })
+    }
+});
 
-    
+
 fetch('http://localhost:5000/statistics', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+})
     .then(response => response.json())
     .then(data => {
         let str = `<h1>Statistics</h1>
@@ -73,7 +74,7 @@ fetch('http://localhost:5000/statistics', {
                    <div class="stat"><h4>Most Booked Car:</h4>${data.mostBookedCar.car}<br><br> Times booked: ${data.mostBookedCar.numberOfBookings}</div>
                    <div class="stat"><h4>Least Booked Car:</h4>${data.leastBookedCar.car}<br><br> Times booked: ${data.leastBookedCar.numberOfBookings}</div>
                 `;
-         document.querySelector('.statisticsContainer').innerHTML = str;
+        document.querySelector('.statisticsContainer').innerHTML = str;
 
     })
     .catch((err) => {
@@ -81,20 +82,103 @@ fetch('http://localhost:5000/statistics', {
     })
 
 
-    let deleteCarForm = document.querySelector('.deleteCarForm')
-    deleteCarForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+let addAdminForm = document.querySelector('.addAdminForm')
+addAdminForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let errors = [];
+    let errorElement = document.querySelector('.adminErrorElement');
+    errorElement.innerText = '';
 
-        let deleteInput = document.querySelector('#deleteCarInput').value;
+    let name = document.querySelector('#adminNameInput').value;
+    let password = document.querySelector('#adminPasswordInput').value;
+    let confirm = document.querySelector('#adminConfirmInput').value;
+    let email = document.querySelector('#adminEmailInput').value;
+    let phone = document.querySelector('#adminPhoneInput').value;
+    let dl = document.querySelector('#adminDlInput').value;
+    let gender = document.querySelector('#adminGenderInput').value;
 
-        fetch('http://localhost:5000/deletecar', {
-        
-            method: 'DELETE',
+    if (name.length > 20 || name.length < 4) {
+        errors.push('Name must be between 4 and 20 characters long')
+    }
+
+    if (password !== confirm) {
+        errors.push('Passwords do not match')
+    }
+
+    if (password.length < 6 || password.length > 20) {
+        errors.push('Password must be between 6 and 20 characters long')
+    }
+
+    if (errors.length > 0) {
+        errorElement.innerText = errors.join('\n')
+    } else {
+        let adminInfo = {
+            name: name,
+            password: password,
+            confirm: confirm,
+            email: email,
+            phone: phone,
+            dl: dl,
+            gender: gender,
+            admin: true
+        }
+
+        fetch('http://localhost:5000/addadmin', {
+            method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({deleteInput})
+            body: JSON.stringify(adminInfo)
         })
+            .then(response => response.json())
+            .then(data => {
+                let adminResultDiv = document.querySelector('.adminResultDiv');
+                adminResultDiv.innerHTML = ''; // Resetting the error/success div each time this function is called
+                let adminStr = '';
+                if (data.x) { // If admin was saved
+                    adminStr += `<div class="success">Admin successfully added</div>`
+                } else {
+                    if (data.err.code === 11000) { // If duplication error occured
+                        adminStr += `<div class="failure">This ${Object.keys(data.err.keyValue)} is already taken</div>` // Error message indicating that a field is already in use
+                    } else if (data.err.errors.email) { // If email validation error occured
+                        adminStr += `<div class="failure">${data.err.errors.email.message}</div>`
+                    }
+                }
+                adminResultDiv.innerHTML = adminStr;
+
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+let deleteCarForm = document.querySelector('.deleteCarForm')
+deleteCarForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    let deleteInput = document.querySelector('#deleteCarInput').value;
+
+    fetch('http://localhost:5000/deletecar', {
+
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ deleteInput })
+    })
         .then(response => response.json())
         .then(data => {
             let resultDiv = document.querySelector('.deleteCarResultDiv');
@@ -110,22 +194,22 @@ fetch('http://localhost:5000/statistics', {
         .catch((err) => {
             `An error occured while attempting to fetch: ${err}`
         })
+})
+
+let deleteCustomerForm = document.querySelector('.deleteCustomerForm')
+deleteCustomerForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    let deleteInput = document.querySelector('#deleteCustomerInput').value;
+
+    fetch('http://localhost:5000/deletecustomer', {
+
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ deleteInput })
     })
-
-    let deleteCustomerForm = document.querySelector('.deleteCustomerForm')
-    deleteCustomerForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        let deleteInput = document.querySelector('#deleteCustomerInput').value;
-
-        fetch('http://localhost:5000/deletecustomer', {
-        
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({deleteInput})
-        })
         .then(response => response.json())
         .then(data => {
             let resultDiv = document.querySelector('.deleteCustomerResultDiv');
@@ -141,4 +225,4 @@ fetch('http://localhost:5000/statistics', {
         .catch((err) => {
             `An error occured while attempting to fetch: ${err}`
         })
-    })
+})

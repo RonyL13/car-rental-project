@@ -208,6 +208,21 @@ module.exports = {
             console.log(err);
             return err;
         }
+    },
+
+
+    async createAdmin(adminInfo) {
+        try {
+            const newAdmin = new Customer(adminInfo);
+            const token = createToken(newAdmin._id)
+            const x = await newAdmin.save();
+            return {x};
+        }
+
+        catch (err) {
+            console.log({ err });
+            return { err }
+        }
     }
 }
 

@@ -29,8 +29,24 @@
                 <label for="">Year</label>
                 <input type="text" name="" id="yearInput">
             </div>
+            <div>
+                <label for="from">From:</label>
+                <input type="date" name="from" id="fromInput" required>
+            </div>
+            <div>
+                <label for="to">To:</label>
+                <input type="date" name="to" id="toInput" required>
+            </div>
+            <div class="errorContainer"></div>
             <button type="submit">Search</button>
         </form>
+        <div class="availableInputsContainer">
+            <input type="radio" name="showUnavailable" value="show" onclick="showUnavailable()">
+            <label for="showUnavailable">Show Unavailable Cars</label>
+
+            <input type="radio" name="showUnavailable" value="hide" onclick="hideUnavailable()">
+            <label for="showUnavailable">Hide Unavailable Cars</label>
+        </div>
     </div>
     <div id="resultsContainer">
         

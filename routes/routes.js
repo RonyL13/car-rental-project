@@ -48,7 +48,7 @@ router.get('/login', (req, res) => {
 
 router.post('/login', async (req, res) => {
     const x = await myRepository.customerLogin(req.body);
-    res.cookie('jwt', x.token, { httpOnly: true, maxAge: 200000});
+    res.cookie('jwt', x.token, { httpOnly: true, maxAge: 200000000});
     res.send(x);
 })
 

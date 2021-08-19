@@ -7,8 +7,11 @@ addCarForm.addEventListener('submit', (e) => {
     let plateInput = document.querySelector('#plateInput').value;
     let colorInput = document.querySelector('#colorInput').value;
     let seatsInput = document.querySelector('#seatsInput').value;
+    let priceInput = document.querySelector('#priceInput').value;
     let transmissionInput = document.querySelector('#transmissionInput').value;
     let imageInput = document.querySelector('#imageInput').value;
+    let fromInput = document.querySelector('#fromInput').value;
+
 
     
     let info = {
@@ -18,8 +21,10 @@ addCarForm.addEventListener('submit', (e) => {
         plate: plateInput,
         color: colorInput,
         seats: seatsInput,
+        price: priceInput,
         transmission: transmissionInput,
-        image: imageInput
+        image: imageInput,
+        from: fromInput
     }
     
     fetch('http://localhost:5000/addcar', {

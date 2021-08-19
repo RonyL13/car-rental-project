@@ -51,8 +51,8 @@ module.exports = {
 
 
     // This function returns the results based on the user's search parameters on the landing page search form
-    async getCarByFilters(params) {
-        const results = await Car.find(params)
+    async getCarByFilters(info) {
+        const results = await Car.find(info.params)
             return results;
     },
 
@@ -71,23 +71,33 @@ module.exports = {
         }
     },
 
-    async bookCar(carId, customerToken) {
-       
-        // Grab the customer database ID and store it in a variable
-        let customerId = jwt.verify(customerToken, 'rental project secret', (err, decodedToken) => {
-            return decodedToken.id; 
-        })
-        const carResult = await Car.findById(carId.id);
+    async bookCar(info, customerToken) {
+       try {
+           
+        const carResult = await Car.findById(info.id);
+        // Check if car is available
+        if((info['from'] <= carResult['booking']['to']) && (carResult['booking']['from'] <= info['to'])) {
+            return {msg: 'This car is unavailable'}
+        } else {
+            // Grab the customer database ID and store it in a variable
+            let customerId = jwt.verify(customerToken, 'rental project secret', (err, decodedToken) => {
+                return decodedToken.id; 
+            })
+            // Change the booking object to reflect the new booking
+            carResult['booking'] = {
+                isBooked: true,
+                by: customerId,
+                from: info['from'],
+                to: info['to']
+            }
 
-        carResult['booking'] = {
-            isBooked: true,
-            by: customerId
+            const x = await carResult.save();
+            return x;
         }
-
-        const x = await carResult.save();
-
-        console.log(x);
-        return x;
+    }
+    catch(err) {
+        console.log('this is err: ' + err);
+    }
     }
 }
 

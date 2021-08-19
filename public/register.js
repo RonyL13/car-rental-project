@@ -4,6 +4,8 @@ let form = document.querySelector('#form')
 // Extracts info from form and puts it in an object. Afterwards this function will send a POST request using fetch api.
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    let errors = [];
     let errorElement = document.querySelector('.errorContainer')
 
     let name = document.querySelector('#nameId').value;
@@ -14,7 +16,6 @@ form.addEventListener('submit', (e) => {
     let dl = document.querySelector('#dlId').value;
     let gender = document.querySelector('#genderId').value;
 
-    let errors = [];
 
     if (name.length > 20 || name.length < 4) {
         errors.push('Name must be between 4 and 20 characters long')

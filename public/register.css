@@ -1,0 +1,44 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#form {
+    margin: 10px;
+    width: 25em;
+    border: solid black 1px;
+    background-color: rgb(124, 122, 122);
+    border-radius: 5%;
+    color: white;
+    padding: 10px;
+}
+
+.labelPlusInputContainer {
+    padding: 5px;
+}
+
+.labelPlusInputContainer label{
+    display: block;
+}
+
+.labelPlusInputContainer input {
+    width: 100%;
+}
+
+.labelPlusInputContainer select {
+    width: 100%;
+}
+
+.submitBtn {
+        margin-top: 5px;
+        background-color: lightblue;
+        border-radius: .2em;
+        border: none;
+        width: 100%;
+        cursor: pointer;
+        color: white;
+        padding: 8px;
+        text-align: center;
+        font-size: 16px;
+}

@@ -5,12 +5,9 @@
 
     <body>
         <%- include('./partials/navbar.ejs') %>
-            <div class="sideMenu">
-                <a href="#addFormsContainer">Add</a>
-                <a href="">Update</a>
-                <a href="#deleteFormsContainer">Delete</a>
+            <div class="statisticsSection">
+                <div class="statsDiv"></div>
             </div>
-            <div class="statisticsContainer"></div>
             <div id="addFormsContainer" class="addFormsContainer">
                 <div class="addCarFormContainer">
                     <form id="addCarForm">
@@ -172,7 +169,7 @@
                 </div>
             </div>
             <div class="updateContainer">
-                <div class="updateFormsContainer">
+                <div class="updateFormsContainer" id="updateFormsContainer">
                     <div class="updateCarFormContainer">
                         <form class="updateCarForm">
                             <h2 class="formTitle">Update a Car:</h2>

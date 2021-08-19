@@ -25,3 +25,12 @@
     padding: 8px 12px;
 }
 
+@media (max-width: 800px) {
+    .navbar {
+        flex-direction: column;
+        justify-content: center;
+        height: 5rem;
+    }
+}
+
+

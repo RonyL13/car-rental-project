@@ -67,14 +67,16 @@ fetch('http://localhost:5000/statistics', {
 })
     .then(response => response.json())
     .then(data => {
-        let str = `<h1>Statistics</h1>
-                   <div class="stat">Number of Customers: ${data.customers}</div>
-                   <div class="stat">Number of Cars: ${data.cars}</div>
-                   <div class="stat">Number of Orders: ${data.orders}</div>
-                   <div class="stat"><h4>Most Booked Car:</h4>${data.mostBookedCar.car}<br><br> Times booked: ${data.mostBookedCar.numberOfBookings}</div>
-                   <div class="stat"><h4>Least Booked Car:</h4>${data.leastBookedCar.car}<br><br> Times booked: ${data.leastBookedCar.numberOfBookings}</div>
+        let str = `<div class="statisticsTitle">Statistics Overview</div>
+                    <div class="statisticsContainer">
+                        <div class="stat">Number of Customers: <br><br><br> ${data.customers}</div>
+                        <div class="stat">Number of Cars: <br><br><br> ${data.cars}</div>
+                        <div class="stat">Number of Orders: <br><br><br> ${data.orders}</div>
+                        <div class="stat"><h4>Most Booked Car:</h4>${data.mostBookedCar.car}<br><br> Times booked: ${data.mostBookedCar.numberOfBookings}</div>
+                        <div class="stat"><h4>Least Booked Car:</h4>${data.leastBookedCar.car}<br><br> Times booked: ${data.leastBookedCar.numberOfBookings}</div>
+                   </div>
                 `;
-        document.querySelector('.statisticsContainer').innerHTML = str;
+        document.querySelector('.statsDiv').innerHTML = str;
 
     })
     .catch((err) => {

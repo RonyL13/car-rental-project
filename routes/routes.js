@@ -24,6 +24,16 @@ router.get('/views/images/bluecar.png', (req, res) => {
 router.get('/views/images/fadingbackground2.png', (req, res) => {
     res.sendFile(path.join(__dirname+'/../views/images/fadingbackground2.png'))
 })
+router.get('/views/images/blur-about-background.jpeg', (req, res) => {
+    res.sendFile(path.join(__dirname+'/../views/images/woodenoffice.jpeg'))
+})
+router.get('/views/images/rulerandpencil.png', (req, res) => {
+    res.sendFile(path.join(__dirname+'/../views/images/rulerandpencil.png'))
+})
+router.get('/views/images/maleface.png', (req, res) => {
+    res.sendFile(path.join(__dirname+'/../views/images/maleface.png'))
+})
+
 
 
 router.get('/register', (req, res) => {
@@ -128,5 +138,7 @@ router.delete('/deleteorder', async (req, res) => {
     const x = await myRepository.deleteOrder(req.body);
     res.send(x);
 })
+
+
 
 module.exports = router;

@@ -26,12 +26,16 @@ const bcrypt = require('bcrypt')
      phone: {
         type: String,
         required: [true, 'Missing field: Phone Number'],
-        unique: true
+        unique: true,
+        minlength: [10, 'Phone number must be 10 digits'],
+        maxlength: [10, 'Phone number must be 10 digits']
      },
      dl: {
         type: String,
         required: [true, "Missing field: Driver's License {VALUE}"],
-        unique: true
+        unique: true,
+        minlength: [7, "Driver's license must be 7 characters long"],
+        maxlength: [7, "Driver's license must be 7 characters long"]
      },
      gender: String,
 

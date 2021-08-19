@@ -8,11 +8,13 @@ fetch('http://localhost:5000/getcustomerorders')
     } else {
         for (let i = 0; i < data['orders'].length; i++) {
             str += `<div class="order">
-                        <p>Car name: ${data['cars'][i]['manufacturer']} ${data['cars'][i]['model']}</p>
-                        <p>Reciveing date: ${data['orders'][i]['from'].split('T').shift()}</p> 
-                        <p>Returning date: ${data['orders'][i]['to'].split('T').shift()}</p>
-                        <p>Total number of days: ${data['orders'][i]['days']}</p>
-                        <p>Total price: ${data['orders'][i]['totalPrice']}</p>
+                        <div class="orderDetailsContainer"
+                            <p>Car name: ${data['cars'][i]['manufacturer']} ${data['cars'][i]['model']}</p>
+                            <p>Reciveing date: ${data['orders'][i]['from'].split('T').shift()}</p> 
+                            <p>Returning date: ${data['orders'][i]['to'].split('T').shift()}</p>
+                            <p>Total number of days: ${data['orders'][i]['days']}</p>
+                            <p>Total price: ${data['orders'][i]['totalPrice']} &#8362</p>
+                        </div>
                         <div class="cancelOrderResultDiv"></div>
                         <button index="${data['orders'][i]['_id']}" class="cancelBtn" onclick="cancelOrder(this)">Cancel Order</button>
                     </div>`

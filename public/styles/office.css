@@ -1,29 +1,37 @@
-body {
-    background-color: white;
-}
-
-.statisticsContainer {
-    background-color: rgb(231, 231, 231);
+.statisticsSection {
     display: flex;
     justify-content: center;
 }
 
-.statisticsContainer h1 {
-    margin-top: 2.5%;
+.statsDiv {
+    display: flex;
+    flex-direction: column;
+    margin: 2% 5% 2% 30%;
+    width: 70%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.statisticsTitle {
+    background-color: rgb(45, 45, 45);
+    color: white;
+    padding: 1%;
+}
+.statisticsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .stat {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    word-break: break-all;
-
-    justify-content: center;    
-    width: 15%;
-    height: 5rem;
+    text-align: center;
     margin: 1%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 5%;
+    justify-content: center;    
+    width: 20%;
+    background-color: rgb(225, 225, 225);
+    padding: 1%;
 }
 
 /* =============================================================== */

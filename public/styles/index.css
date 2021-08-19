@@ -22,6 +22,26 @@
     margin-top: -10%;
 }
 
+.middleParagraphsContainer {
+    width: 100%;
+    background-color: rgb(235, 235, 235);
+    padding: 3%;
+    margin-top: 5%;
+}
+.paragraphContainer {
+    background-color: white;
+    border: 0;
+    width: 90%;
+    margin: auto;
+    margin-top: 2%;
+    padding: 3%;
+}
+
+.paragraphContainer h2 {
+    color: #0069a0;
+    margin-bottom: 1%;
+}
+
 .searchAndResultsContainer {
     background-image: url('../../views/images/fadingbackground2.png');
     background-size: cover;
@@ -29,7 +49,6 @@
 
 }
 .searchFormContainer {
-    margin-top: 5rem;
     padding-top: 1rem;
     background-size: 100%;
     background-position-y: 80%;
@@ -58,6 +77,12 @@
 
 .searchForm {
     display: flex;
+    justify-content: center;
+}
+
+.errorContainer {
+    padding: 1%;
+    text-align: center;
 }
 
 #resultsContainer img {
@@ -153,3 +178,61 @@
     margin-top: 0;
 }
 
+@media (max-width: 800px) {
+    .mainContainer {
+        background-position-x: 50%;
+        padding-top: 5%;
+    }
+
+    .carPictureContainer {
+        margin-top: -25%;
+        width: 200%;
+        background-position-x: 0;
+    }
+
+    .middleParagraphsContainer {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .paragraphContainer {
+        width: 100%;
+        margin: auto;
+        margin-top: 5%;
+    }
+
+    .paragraphContainer h2{
+        margin-bottom: 0;
+    }
+
+    .searchFormContainer {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .searchForm {
+        flex-direction: column;
+    }
+    .searchInputsContainer {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .carComponent {
+        width: 50%;
+        padding: 2%;
+    }
+
+    .carComponent button{
+        margin-top: 2%;
+        padding: 2%;
+    }
+
+    .booked {
+        width: 50%;
+        padding: 2%;
+    }
+    .footerContainer {
+        padding-top: 2%;
+    }
+
+}

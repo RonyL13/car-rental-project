@@ -64,6 +64,12 @@ form.addEventListener('submit', (e) => {
                 if (data.err.errors.email) { // If email validation error occured
                     alert(data.err.errors.email.message);
                 }
+                if (data.err.errors.phone) { // If email validation error occured
+                    alert(data.err.errors.phone.message);
+                }
+                if (data.err.errors.dl) { // If email validation error occured
+                    alert(data.err.errors.dl.message);
+                }
             }
         })
         .catch((error) => {

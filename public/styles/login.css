@@ -36,3 +36,19 @@
     font-size: 16px;
     color: magenta;
 }
+
+.footerContainer {
+    margin-top: 15%;
+}
+
+@media (max-width: 800px) {
+
+    .loginForm {
+        width: 100%;
+        margin-top: 20%;
+    }
+
+    .footerContainer {
+        margin-top: 30%;
+    }
+}

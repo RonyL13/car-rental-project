@@ -1,179 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/head.ejs') %>
-<link rel="stylesheet" href="styles/office.css">
-<body>
-    <%- include('./partials/navbar.ejs') %>
-    <div class="sideMenu">
-        <a href="#addFormsContainer">Add</a>
-        <a href="">Update</a>
-        <a href="#deleteFormsContainer">Delete</a>
-    </div>
-    <div class="statisticsContainer"></div>
-    <div id="addFormsContainer" class="addFormsContainer">
-        <div class="addCarFormContainer">
-            <form id="addCarForm">
-                <h2 class="formTitle">Add a Car:</h2>
-                <div class="labelPlusInputContainer">
-                    <label for="">Manufacturer</label>
-                    <input type="text" name="" id="manufacturerInput" required>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="">Model</label>
-                    <input type="text" name="" id="modelInput" required>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="">Year</label>
-                    <input type="number" name="" id="yearInput" required>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="">Plate</label>
-                    <input type="text" name="" id="plateInput" required>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="">Color</label>
-                    <input type="text" name="" id="colorInput" required>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="seats">Seats</label>
-                    <input type="number" name="seats" id="seatsInput" required>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="price">Price</label>
-                    <input type="number" name="price" id="priceInput" required>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="transmission">Transmission</label>
-                    <select name="tansmission" id="transmissionInput">
-                        <option value="Manual">Manual</option>
-                        <option value="Automatic">Automatic</option>
-                    </select>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="">Image Source</label>
-                    <input type="text" name="" id="imageInput" required>
-                </div>
-                <div class="addCarResultDiv"></div>
-                <div class="addCarErrorContainer"></div>
-                <button type="submit" class="submitBtn">Add</button>
-            </form>
-        </div>
-        <div class="addCustomerFormContainer">
-            <form class="addCustomerForm">
-                <h2 class="formTitle">Add a Customer</h2>
-                <div class="labelPlusInputContainer">
-                    <label for="name">Full name</label>
-                    <input type="text" name="name" id="nameId" required>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="passwordId" required>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="">Confirm password</label>
-                    <input type="password" id="confirmId" required>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="">Email address</label>
-                    <input type="email" name="email" id="emailId" required> 
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="">Phone number</label>
-                    <input type="text" name="phone" id="phoneId" required>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="">Driver's license</label>
-                    <input type="text" name="dl" id="dlId" required>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="">Gender</label>
-                    <select name="" id="genderId">
-                        <option value="male">male</option>
-                        <option value="female">female</option>
-                        <option value="other">other</option>
-                    </select>
-                </div>
-                <div class="addCustomerErrorContainer"></div>
-                <div class="submitContainer">
-                    <button class="submitBtn" type="submit">Add</button>
-                </div>
-            </form>
-        </div>
-        <div class="addAdminFormContainer">
-            <form class="addAdminForm">
-                <h2>Add Admin</h2>
-                <div class="labelPlusInputContainer">
-                    <label for="adminName">Full name</label>
-                    <input type="text" name="adminName" id="adminNameInput" required>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="adminPassword">Password</label>
-                    <input type="password" name="adminPassword" id="adminPasswordInput" required>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="adminConfirm">Confirm password</label>
-                    <input type="password" name="adminConfirm" id="adminConfirmInput" required>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="adminEmail">Email address</label>
-                    <input type="email" name="adminEmail" id="adminEmailInput" required> 
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="adminPhone">Phone number</label>
-                    <input type="text" name="adminPhone" id="adminPhoneInput" required>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="adminDl">Driver's License</label>
-                    <input type="text" name="adminDl" id="adminDlInput" required>
-                </div>
-                <div class="labelPlusInputContainer">
-                    <label for="">Gender</label>
-                    <select name="" id="adminGenderInput">
-                        <option value="male">male</option>
-                        <option value="female">female</option>
-                        <option value="other">other</option>
-                    </select>
-                </div>
-                <div class="adminResultDiv"></div>
-                <div class="adminErrorElement"></div>
-                <button class="submitBtn" type="submit">Add</button>
-            </form>
-        </div>
-        <div class="addTitle">
-            <h1>ADD</h1>
-        </div>
-    </div>
-<div id="deleteFormsContainer" class="deleteContainer">
-    <h1>DELETE</h1>
-    <div class="deleteFormsContainer">
-        <div class="deleteCarFormContainer">
-            <form class="deleteCarForm">
-                <h3>Delete Car</h3>
-                <div class="labelPlusInputContainer">
-                    <label for="idInput">Car ID:</label>
-                    <input type="text" name="idInput" id="deleteCarInput">
-                </div>
-                <div class="deleteCarResultDiv"></div>
-                <button type="submit" class="submitBtn">Delete</button>
-            </form>
-        </div>
-        <div class="deleteCustomerFormContainer">
-            <form class="deleteCustomerForm">
-                <h3>Delete Customer</h3>
-                <div class="labelPlusInputContainer">
-                    <label for="idInput">Customer ID:</label>
-                    <input type="text" name="idInput" id="deleteCustomerInput">
-                </div>
-                <div class="deleteCustomerResultDiv"></div>
-                <button type="submit" class="submitBtn">Delete</button>
-            </form>
-        </div>
-    </div>
-</div>
-    
-    <script src="office.js"></script>
-    <script src="/register.js"></script>
+<%- include('./partials/head.ejs') %>
+    <link rel="stylesheet" href="styles/office.css">
 
-    <%- include('./partials/footer.ejs') %>
-</body>
+    <body>
+        <%- include('./partials/navbar.ejs') %>
+            <div class="sideMenu">
+                <a href="#addFormsContainer">Add</a>
+                <a href="">Update</a>
+                <a href="#deleteFormsContainer">Delete</a>
+            </div>
+            <div class="statisticsContainer"></div>
+            <div id="addFormsContainer" class="addFormsContainer">
+                <div class="addCarFormContainer">
+                    <form id="addCarForm">
+                        <h2 class="formTitle">Add a Car:</h2>
+                        <div class="labelPlusInputContainer">
+                            <label for="">Manufacturer</label>
+                            <input type="text" name="" id="manufacturerInput" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="">Model</label>
+                            <input type="text" name="" id="modelInput" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="">Year</label>
+                            <input type="number" name="" id="yearInput" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="">Plate</label>
+                            <input type="text" name="" id="plateInput" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="">Color</label>
+                            <input type="text" name="" id="colorInput" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="seats">Seats</label>
+                            <input type="number" name="seats" id="seatsInput" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="price">Price</label>
+                            <input type="number" name="price" id="priceInput" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="transmission">Transmission</label>
+                            <select name="tansmission" id="transmissionInput">
+                                <option value="Manual">Manual</option>
+                                <option value="Automatic">Automatic</option>
+                            </select>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="">Image Source</label>
+                            <input type="text" name="" id="imageInput" required>
+                        </div>
+                        <div class="addCarResultDiv"></div>
+                        <div class="addCarErrorContainer"></div>
+                        <button type="submit" class="submitBtn">Add</button>
+                    </form>
+                </div>
+                <div class="addCustomerFormContainer">
+                    <form class="addCustomerForm">
+                        <h2 class="formTitle">Add a Customer</h2>
+                        <div class="labelPlusInputContainer">
+                            <label for="name">Full name</label>
+                            <input type="text" name="name" id="nameId" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="passwordId" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="">Confirm password</label>
+                            <input type="password" id="confirmId" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="">Email address</label>
+                            <input type="email" name="email" id="emailId" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="">Phone number</label>
+                            <input type="text" name="phone" id="phoneId" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="">Driver's license</label>
+                            <input type="text" name="dl" id="dlId" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="">Gender</label>
+                            <select name="" id="genderId">
+                                <option value="male">male</option>
+                                <option value="female">female</option>
+                                <option value="other">other</option>
+                            </select>
+                        </div>
+                        <div class="addCustomerErrorContainer"></div>
+                        <div class="submitContainer">
+                            <button class="submitBtn" type="submit">Add</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="addAdminFormContainer">
+                    <form class="addAdminForm">
+                        <h2>Add Admin</h2>
+                        <div class="labelPlusInputContainer">
+                            <label for="adminName">Full name</label>
+                            <input type="text" name="adminName" id="adminNameInput" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="adminPassword">Password</label>
+                            <input type="password" name="adminPassword" id="adminPasswordInput" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="adminConfirm">Confirm password</label>
+                            <input type="password" name="adminConfirm" id="adminConfirmInput" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="adminEmail">Email address</label>
+                            <input type="email" name="adminEmail" id="adminEmailInput" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="adminPhone">Phone number</label>
+                            <input type="text" name="adminPhone" id="adminPhoneInput" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="adminDl">Driver's License</label>
+                            <input type="text" name="adminDl" id="adminDlInput" required>
+                        </div>
+                        <div class="labelPlusInputContainer">
+                            <label for="">Gender</label>
+                            <select name="" id="adminGenderInput">
+                                <option value="male">male</option>
+                                <option value="female">female</option>
+                                <option value="other">other</option>
+                            </select>
+                        </div>
+                        <div class="adminResultDiv"></div>
+                        <div class="adminErrorElement"></div>
+                        <button class="submitBtn" type="submit">Add</button>
+                    </form>
+                </div>
+                <div class="addTitle">
+                    <h1>ADD</h1>
+                </div>
+            </div>
+            <div id="deleteFormsContainer" class="deleteContainer">
+                <h1>DELETE</h1>
+                <div class="deleteFormsContainer">
+                    <div class="deleteCarFormContainer">
+                        <form class="deleteCarForm">
+                            <h3>Delete Car</h3>
+                            <div class="labelPlusInputContainer">
+                                <label for="idInput">Car ID:</label>
+                                <input type="text" name="idInput" id="deleteCarInput">
+                            </div>
+                            <div class="deleteCarResultDiv"></div>
+                            <button type="submit" class="submitBtn">Delete</button>
+                        </form>
+                    </div>
+                    <div class="deleteCustomerFormContainer">
+                        <form class="deleteCustomerForm">
+                            <h3>Delete Customer</h3>
+                            <div class="labelPlusInputContainer">
+                                <label for="idInput">Customer ID:</label>
+                                <input type="text" name="idInput" id="deleteCustomerInput">
+                            </div>
+                            <div class="deleteCustomerResultDiv"></div>
+                            <button type="submit" class="submitBtn">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="updateContainer">
+                <div class="updateFormsContainer">
+                    <div class="updateCarFormContainer">
+                        <form class="updateCarForm">
+                            <h2 class="formTitle">Update a Car:</h2>
+                            <div class="labelPlusInputContainer">
+                                <label for="">Car ID:</label>
+                                <input type="text" name="" class="updateCarIdInput" required>
+                            </div>
+                            <div class="labelPlusInputContainer">
+                                <label for="">Manufacturer</label>
+                                <input type="text" name="" class="updateCarManufacturerInput">
+                            </div>
+                            <div class="labelPlusInputContainer">
+                                <label for="">Model</label>
+                                <input type="text" name="" class="updateCarModelInput">
+                            </div>
+                            <div class="labelPlusInputContainer">
+                                <label for="">Year</label>
+                                <input type="number" name="" class="updateCarYearInput">
+                            </div>
+                            <div class="labelPlusInputContainer">
+                                <label for="">Plate</label>
+                                <input type="text" name="" class="updateCarPlateInput">
+                            </div>
+                            <div class="labelPlusInputContainer">
+                                <label for="">Color</label>
+                                <input type="text" name="" class="updateCarColorInput">
+                            </div>
+                            <div class="labelPlusInputContainer">
+                                <label for="seats">Seats</label>
+                                <input type="number" name="seats" class="updateCarSeatsInput">
+                            </div>
+                            <div class="labelPlusInputContainer">
+                                <label for="price">Price</label>
+                                <input type="number" name="price" class="updateCarPriceInput">
+                            </div>
+                            <div class="labelPlusInputContainer">
+                                <label for="transmission">Transmission</label>
+                                <select name="tansmission" class="updateCarTransmissionInput">
+                                    <option value="">Select</option>
+                                    <option value="Manual">Manual</option>
+                                    <option value="Automatic">Automatic</option>
+                                </select>
+                            </div>
+                            <div class="labelPlusInputContainer">
+                                <label for="">Image Source</label>
+                                <input type="text" name="" class="updateCarImageInput">
+                            </div>
+                            <div class="updateCarResultDiv"></div>
+                            <div class="updateCarErrorContainer"></div>
+                            <button type="submit" class="submitBtn">Update</button>
+                        </form>
+                    </div>
+                    <div class="updateCustomerFormContainer">
+                        <form class="updateCustomerForm">
+                            <h2 class="formTitle">Update a Customer</h2>
+                            <div class="labelPlusInputContainer">
+                                <label for="">Customer ID:</label>
+                                <input type="text" name="" class="updateCustomerIdInput" required>
+                            </div>
+                            <div class="labelPlusInputContainer">
+                                <label for="name">Full name</label>
+                                <input type="text" name="name" class="updateCustomerNameInput">
+                            </div>
+                            <div class="labelPlusInputContainer">
+                                <label for="">Email address</label>
+                                <input type="email" name="email" class="updateCustomerEmailInput">
+                            </div>
+                            <div class="labelPlusInputContainer">
+                                <label for="">Phone number</label>
+                                <input type="text" name="phone" class="updateCustomerPhoneInput">
+                            </div>
+                            <div class="labelPlusInputContainer">
+                                <label for="">Driver's license</label>
+                                <input type="text" name="dl" class="updateCustomerDlInput">
+                            </div>
+                            <div class="labelPlusInputContainer">
+                                <label for="">Gender</label>
+                                <select name="" class="updateCustomerGenderInput">
+                                    <option value="male">male</option>
+                                    <option value="female">female</option>
+                                    <option value="other">other</option>
+                                </select>
+                            </div>
+                            <div class="updateCustomerResultDiv"></div>
+                            <div class="updateCustomerErrorContainer"></div>
+                            <div class="submitContainer">
+                                <button class="submitBtn" type="submit">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="updateAdminFormContainer">
+                        <form class="updateAdminForm">
+                            <h3>Update Admin Status</h3>
+                            <div class="labelPlusInputContainer">
+                                <label for="updateAdminId">ID:</label>
+                                <input type="text" name="updateAdminId" id="updateAdminIdInput" required>
+                            </div>
+                            <div class="updateAdminResultDiv"></div>
+                            <button type="submit" class="submitBtn">Delete</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="updateTitle">
+                    <h1>UPDATE</h1>
+                </div>
+            </div>
+
+            <script src="office.js"></script>
+            <script src="/register.js"></script>
+
+            <%- include('./partials/footer.ejs') %>
+    </body>
+
 </html>

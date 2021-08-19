@@ -153,18 +153,6 @@ addAdminForm.addEventListener('submit', (e) => {
     }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
 let deleteCarForm = document.querySelector('.deleteCarForm')
 deleteCarForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -221,6 +209,191 @@ deleteCustomerForm.addEventListener('submit', (e) => {
                 str += `<div class="success">Customer successfully deleted</div>`
             }
             resultDiv.innerHTML = str;
+        })
+        .catch((err) => {
+            `An error occured while attempting to fetch: ${err}`
+        })
+})
+
+// ===========================================================================
+
+let updateCarForm = document.querySelector('.updateCarForm')
+updateCarForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let carIdInput = document.querySelector('.updateCarIdInput').value;
+    let manufacturerInput = document.querySelector('.updateCarManufacturerInput').value;
+    let modelInput = document.querySelector('.updateCarModelInput').value;
+    let yearInput = document.querySelector('.updateCarYearInput').value;
+    let plateInput = document.querySelector('.updateCarPlateInput').value;
+    let colorInput = document.querySelector('.updateCarColorInput').value;
+    let seatsInput = document.querySelector('.updateCarSeatsInput').value;
+    let priceInput = document.querySelector('.updateCarPriceInput').value;
+    let transmissionInput = document.querySelector('.updateCarTransmissionInput').value;
+    let imageInput = document.querySelector('.updateCarImageInput').value;
+
+    let errors = [];
+    let errorElement = document.querySelector('.updateCarErrorContainer')
+
+    let info = {
+        id: carIdInput
+    }
+
+    if (manufacturerInput !== '') {
+        info.manufacturer = manufacturerInput;
+    }
+    if (modelInput !== '') {
+        info.model = modelInput;
+    }
+    if (yearInput !== '') {
+        if (yearInput < 1920 || yearInput > new Date().getFullYear()) {
+            errors.push(`Year must be between 1920 and ${new Date().getFullYear()}`)
+        } else {
+            info.year = yearInput
+        }
+    }
+    if (plateInput !== '') {
+        info.plate = plateInput;
+    }
+    if (colorInput !== '') {
+        info.color = colorInput;
+    }
+    if (seatsInput !== '') {
+        info.seats = seatsInput;
+    }
+    if (priceInput !== '') {
+        info.price = priceInput;
+    }
+    if (transmissionInput !== '') {
+        info.transmission = transmissionInput;
+    }
+    if (imageInput !== '') {
+        info.image = imageInput;
+    }
+
+
+    if (errors.length > 0) {
+        errorElement.innerText = errors.join('\n')
+    } else {
+        fetch('http://localhost:5000/updatecar', {
+
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(info)
+        })
+            .then(response => response.json())
+            .then(data => {
+                let updateCarResultDiv = document.querySelector('.updateCarResultDiv');
+                updateCarResultDiv.innerHTML = ''; // Resetting the error/success div each time this function is called
+                let str = '';
+                if (data.msg === 'Car successfully updated') {
+                    str += `<div class="success">${data.msg}</div>`
+                } else {
+                    str += `<div class="failure">${data.msg}</div>`
+                }
+                updateCarResultDiv.innerHTML = str;
+            })
+            .catch((err) => {
+                `An error occured while attempting to fetch: ${err}`
+            })
+    }
+});
+
+
+
+
+let updateCustomerForm = document.querySelector('.updateCustomerForm')
+updateCustomerForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let customerIdInput = document.querySelector('.updateCustomerIdInput').value;
+    let nameInput = document.querySelector('.updateCustomerNameInput').value;
+    let emailInput = document.querySelector('.updateCustomerEmailInput').value;
+    let phoneInput = document.querySelector('.updateCustomerPhoneInput').value;
+    let dlInput = document.querySelector('.updateCustomerDlInput').value;
+    let genderInput = document.querySelector('.updateCustomerGenderInput').value;
+
+    let errors = [];
+    let errorElement = document.querySelector('.updateCustomerErrorContainer')
+
+    let info = {
+        id: customerIdInput
+    }
+
+    if (nameInput !== '') {
+        info.name = nameInput;
+    }
+    if (emailInput !== '') {
+        info.email = emailInput;
+    }
+    if (phoneInput !== '') {
+        info.phone = phoneInput;
+    }
+    if (dlInput !== '') {
+        info.dl = dlInput;
+    }
+    if (genderInput !== '') {
+        info.gender = genderInput;
+    }
+
+    if (errors.length > 0) {
+        errorElement.innerText = errors.join('\n')
+    } else {
+        fetch('http://localhost:5000/updatecustomer', {
+
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(info)
+        })
+            .then(response => response.json())
+            .then(data => {
+                let updateCustomerResultDiv = document.querySelector('.updateCustomerResultDiv');
+                updateCustomerResultDiv.innerHTML = ''; // Resetting the error/success div each time this function is called
+                let str = '';
+                if (data.msg === 'Customer successfully updated') {
+                    str += `<div class="success">${data.msg}</div>`
+                } else {
+                    str += `<div class="failure">${data.msg}</div>`
+                }
+                updateCustomerResultDiv.innerHTML = str;
+            })
+            .catch((err) => {
+                `An error occured while attempting to fetch: ${err}`
+            })
+    }
+});
+
+
+
+let updateAdminForm = document.querySelector('.updateAdminForm')
+updateAdminForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    let customerIdInput = document.querySelector('#updateAdminIdInput').value;
+    let info = {
+        id: customerIdInput
+    }
+
+    fetch('http://localhost:5000/updateadmin', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(info)
+    })
+        .then(response => response.json())
+        .then(data => {
+            let updateAdminResultDiv = document.querySelector('.updateAdminResultDiv');
+            updateAdminResultDiv.innerHTML = ''; // Resetting the error/success div each time this function is called
+            let str = '';
+            if (data.msg === 'Admin privileges given' || data.msg === 'Admin privileges removed') {
+                str += `<div class="success">${data.msg}</div>`
+            } else {
+                str += `<div class="failure">${data.msg}</div>`
+            }
+            updateAdminResultDiv.innerHTML = str;
         })
         .catch((err) => {
             `An error occured while attempting to fetch: ${err}`

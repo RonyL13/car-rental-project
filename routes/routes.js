@@ -2,12 +2,24 @@ const express = require('express');
 const router = express.Router();
 const myRepository = require('../myRepository');
 const { authenticate, checkUser, isAdmin } = require('../middleware/authMiddleware');
+const path = require('path')
 
 router.get('*', checkUser); // Use specified middleware in all GET requests
 
 router.get('/', (req, res) => {
     res.render('index', { title: 'Home' })
 });
+
+router.get('/views/images/fadingbackground.png', (req, res) => {
+    res.sendFile(path.join(__dirname+'/../views/images/fadingbackground.png'))
+})
+router.get('/views/images/bluecar.png', (req, res) => {
+    res.sendFile(path.join(__dirname+'/../views/images/bluecar.png'))
+})
+router.get('/views/images/fadingbackground2.png', (req, res) => {
+    res.sendFile(path.join(__dirname+'/../views/images/fadingbackground2.png'))
+})
+
 
 router.get('/register', (req, res) => {
     res.render('register', { title: 'Register' })
@@ -65,23 +77,39 @@ router.get('/about', (req, res) => {
     res.render('about', { title: 'About' })
 })
 
-router.post('/statistics', async (req, res) => {
+router.post('/statistics',isAdmin,  async (req, res) => {
     let x = await myRepository.getStatistics();
     res.send(x);
 })
 
-router.delete('/deletecar', async (req, res) => {
+router.delete('/deletecar', isAdmin,  async (req, res) => {
     let x = await myRepository.deleteCar(req.body);
     res.send(x);
 })
 
-router.delete('/deletecustomer', async (req, res) => {
+router.delete('/deletecustomer', isAdmin,  async (req, res) => {
     let x = await myRepository.deleteCustomer(req.body);
     res.send(x);
 })
 
-router.post('/addadmin', async (req, res) => {
+router.post('/addadmin', isAdmin, async (req, res) => {
     let x = await myRepository.createAdmin(req.body);
     res.send(x);
 })
+
+router.put('/updatecar', isAdmin, async (req, res) => {
+    let x = await myRepository.updateCar(req.body);
+    res.send(x)
+})
+
+router.put('/updatecustomer', isAdmin, async (req, res) => {
+    let x = await myRepository.updateCustomer(req.body);
+    res.send(x)
+})
+
+router.put('/updateadmin', isAdmin, async (req, res) => {
+    let x = await myRepository.updateAdmin(req.body);
+    res.send(x)
+})
+
 module.exports = router;

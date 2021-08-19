@@ -16,6 +16,7 @@
             <a href="/register">Register</a>
         </div>
         <div class="carPictureContainer"></div>
+        <div class="searchAndResultsContainer">
         <div class="searchFormContainer">
             <form class="searchForm">
                 <div class="searchInputsContainer">
@@ -39,16 +40,17 @@
                         <label for="to">To:</label>
                         <input type="date" name="to" id="toInput" required>
                     </div>
-                    <div class="errorContainer"></div>
                     <button class="submitBtn" type="submit">Search</button>
+                    <div class="errorContainer"></div>
                 </div>
             </form>
             <div class="availableInputsContainer">
-                <input type="checkbox" name="showUnavailable" class="showUnavailable" onclick="showUnavailable()">
+                <input type="checkbox" name="showUnavailable" id="showUnavailable" class="showUnavailable" onclick="showUnavailable()">
                 <label for="showUnavailable">Show Unavailable Cars</label>
             </div>
         </div>
         <div id="resultsContainer"></div>
+    </div>
         <%- include('./partials/footer.ejs') %>
             <script src="index.js"></script>
     </body>

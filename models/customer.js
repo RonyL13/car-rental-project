@@ -12,7 +12,7 @@ const bcrypt = require('bcrypt')
       type: String,
       required: [true, 'Missing field: Password'],
       minlength: [6, 'Password cannot be shorter than 6 characters'],
-      maxlength: [20, 'Password cannot exceed 12 characters']
+      maxlength: [20, 'Password cannot exceed 20 characters']
      },
      email: {
         type: String,

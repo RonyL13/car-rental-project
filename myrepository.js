@@ -223,6 +223,45 @@ module.exports = {
             console.log({ err });
             return { err }
         }
+    },
+
+    async updateCar(updateInfo) {
+        try {
+            let carResult = await Car.findOneAndUpdate({_id: updateInfo.id}, updateInfo)
+            return {msg : 'Car successfully updated'};
+        }
+        catch(err) {
+            console.log(err);
+            return {msg: 'Failed to update car, Check ID'};
+        }
+    },
+
+    async updateCustomer(updateInfo) {
+        try {
+            let customerResult = await Customer.findOneAndUpdate({_id: updateInfo.id}, updateInfo)
+            return {msg : 'Customer successfully updated'};
+        }
+        catch(err) {
+            console.log(err);
+            return {msg: 'Failed to update customer, Check ID'};
+        }
+    },
+
+    async updateAdmin(updateInfo) {
+        try {
+            let adminResult = await Customer.findById(updateInfo.id)
+            if (adminResult.admin === true) {
+                let x = await adminResult.updateOne({admin: false})
+                return {msg: 'Admin privileges removed'}
+            } else if (adminResult.admin === false) {
+                let x = await adminResult.updateOne({admin: true})
+                return {msg: 'Admin privileges given'}
+            }
+        }
+        catch(err) {
+            console.log(err);
+            return {msg: 'Something went wrong'}
+        }
     }
 }
 

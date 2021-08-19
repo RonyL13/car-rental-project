@@ -109,6 +109,9 @@ body {
     width: 100%;
 }
 
+.labelPlusInputContainer select {
+    width: 100%;
+}
 
 /* ===================================================== */
 
@@ -155,4 +158,54 @@ body {
 .success {
     color: #4F8A10;
     background-color: #DFF2BF;
+}
+
+
+/* =============================================== */
+
+
+.updateContainer {
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+
+.updateFormsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.updateCarFormContainer {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: solid black 1px;
+    border-radius: 5%;
+    padding: 10px;
+    width: 20rem;
+    height: 30rem;
+}
+
+
+.updateCustomerFormContainer {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: solid black 1px;
+    border-radius: 5%;
+    padding: 10px;
+    width: 20rem;
+    height: 30rem;
+    margin-left: 10%;
+}
+
+.updateAdminFormContainer {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: solid black 1px;
+    border-radius: 5%;
+    padding: 10px;
+    width: 20rem;
+    height: 9rem;
+    margin-bottom: 31.5%;
+    margin-left: 10%;
 }

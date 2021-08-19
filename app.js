@@ -4,11 +4,6 @@ const routes = require('./routes/routes.js');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 
-// app.use((req, res, next) => {
-//     console.log('hello');
-//     next();
-// })
-
 // set the template engine for dynamic html content
 app.set('view engine', 'ejs');
 

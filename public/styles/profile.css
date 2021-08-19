@@ -1,0 +1,38 @@
+.personalInfoContainer {
+    display: flex;
+    height: 10rem;
+    width: 75%;
+    border: 1px black solid;
+    margin: 2%;
+}
+
+.photoContainer {
+    text-align: center;
+    border: black 1px solid;
+    height: 100%;
+    width: 25%
+}
+
+.infoPieceContainer {
+    padding: 2%;
+}
+
+.infoPieceContainer p{
+    font-size: 16px;
+}
+
+.order {
+    border: 1px solid black;
+    padding: 1%;
+    margin: 0 1% 2% 1%;
+}
+
+.failure {
+    color: #D8000C;
+    background-color: #FFD2D2;
+}
+
+.success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}

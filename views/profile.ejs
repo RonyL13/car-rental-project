@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+    <link rel="stylesheet" href="styles/profile.css">
+
+    <body>
+        <%- include('./partials/navbar.ejs') %>
+
+            <div class="personalInfoContainer">
+                <% if (customer) { %>
+                    <div class="photoContainer">
+                        <p>Photo Placeholder</p>
+                    </div>
+                    <div class="infoPieceContainer">
+                        <h2>Name</h2>
+                        <p>
+                            <%= customer.name %>
+                        </p>
+                    </div>
+                    <div class="infoPieceContainer">
+                        <h2>Email</h2>
+                        <p>
+                            <%= customer.email %>
+                        </p>
+                    </div>
+                    <div class="infoPieceContainer">
+                        <h2>Phone number</h2>
+                        <p>
+                            <%= customer.phone %>
+                        </p>
+                    </div>
+                    <div class="infoPieceContainer">
+                        <h2>Driver's License</h2>
+                        <p>
+                            <%= customer.dl %>
+                        </p>
+                    </div>
+                    <% } %>
+            </div>
+
+            <div class="ordersContainer"></div>
+            <%- include('./partials/footer.ejs') %>
+                <script src="logic/profile.js"></script>
+    </body>
+
+</html>

@@ -6,7 +6,9 @@ const bcrypt = require('bcrypt')
  const customersSchema = new mongoose.Schema({
      name: {
          type: String,
-         required: [true, 'Missing field: Name']
+         required: [true, 'Missing field: Name'],
+         minlength: [4, 'Name cannot be shorter than 4 characters'],
+         maxlength: [20, 'Name cannot exceed 20 characters']
      },
      password: {
       type: String,

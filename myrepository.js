@@ -262,6 +262,39 @@ module.exports = {
             console.log(err);
             return {msg: 'Something went wrong'}
         }
+    },
+
+    async getCustomerOrders(token) {
+        try {
+            let customerId = jwt.verify(token, 'rental project secret', (err, decodedToken) => {
+                return decodedToken.id;
+            })
+            let customerOrders = await Order.find({ customer: customerId })
+            let carsOrdered = [];
+            for (let i = 0; i < customerOrders.length; i++) {
+                let car = await Car.findById(customerOrders[i]['car']);
+                carsOrdered.push(car);
+            }
+            return {
+                orders: customerOrders,
+                cars: carsOrdered
+            }
+        }
+        catch(err) {
+            console.log(err);
+            return err;
+        }
+    },
+
+    async deleteOrder(orderId) {
+        try {
+            let deleted = await Order.deleteOne({_id: orderId.id})
+            return ({msg: 'Order Successfully Deleted'})
+        }
+        catch(err) {
+            console.log(err);
+            return err;
+        }
     }
 }
 

@@ -4,7 +4,12 @@ const myRepository = require('../myRepository');
 const { authenticate, checkUser, isAdmin } = require('../middleware/authMiddleware');
 const path = require('path')
 
+
 router.get('*', checkUser); // Use specified middleware in all GET requests
+
+router.get('/profile', authenticate, (req, res) => {
+    res.render('profile', { title: 'Profile' })
+})
 
 router.get('/', (req, res) => {
     res.render('index', { title: 'Home' })
@@ -107,9 +112,21 @@ router.put('/updatecustomer', isAdmin, async (req, res) => {
     res.send(x)
 })
 
+
+
 router.put('/updateadmin', isAdmin, async (req, res) => {
     let x = await myRepository.updateAdmin(req.body);
     res.send(x)
+})
+
+router.get('/getcustomerorders', async (req, res) => {
+    const x = await myRepository.getCustomerOrders(req.cookies.jwt)
+    res.send(x)
+})
+
+router.delete('/deleteorder', async (req, res) => {
+    const x = await myRepository.deleteOrder(req.body);
+    res.send(x);
 })
 
 module.exports = router;

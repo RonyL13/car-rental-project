@@ -118,14 +118,36 @@
     cursor: pointer;
     width: 10rem;
     height: 2rem;
-    margin: 2% 0 0 4%;
-    transition: 1s ease;
+    margin: 2% 4% 0 4%;
+    transition: 0.3s ease;
 }
 
 .submitBtn:hover {
     background-color: darkblue;
     color: lightgray;
 }
+
+
+.bookBtn {
+    font-size: 16px;
+    width: 100%;
+    border: none;
+    border-radius: 5%;
+    background-color: gray;
+    color: darkgray;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.bookBtn:hover {
+    background-color: lightgray;
+    color: gray;
+}
+
+.currUnavailable {
+    text-align: center;
+}
+
 
 .footerContainer {
     margin-top: 0;

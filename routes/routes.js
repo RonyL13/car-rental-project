@@ -33,6 +33,9 @@ router.get('/views/images/rulerandpencil.png', (req, res) => {
 router.get('/views/images/maleface.png', (req, res) => {
     res.sendFile(path.join(__dirname+'/../views/images/maleface.png'))
 })
+router.get('/views/images/abstractdarkbackground.jpeg', (req, res) => {
+    res.sendFile(path.join(__dirname+'/../views/images/abstractdarkbackground.jpeg'))
+})
 
 
 
@@ -40,8 +43,12 @@ router.get('/register', (req, res) => {
     res.render('register', { title: 'Register' })
 })
 
-router.get('/register/successful', (req, res) => {
-    res.render('successful')
+router.get('/successful', (req, res) => {
+    res.render('successful', { title: 'Successful' })
+})
+
+router.get('/contact', (req, res) => {
+    res.render('contact', { title: 'Contact' })
 })
 
 router.post('/register', async (req, res) => {

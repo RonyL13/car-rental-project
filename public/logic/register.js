@@ -56,7 +56,7 @@ form.addEventListener('submit', (e) => {
         .then(response => response.json())
         .then(data => {
             if (data.status) {
-                window.location = './register/successful'
+                window.location = '/successful'
             } else {
                 if(data.err.code === 11000) { // If duplication error occured
                     alert(`This ${Object.keys(data.err.keyValue)} is already taken`) // Error message indicating that a field is already in use

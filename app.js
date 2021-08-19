@@ -17,7 +17,7 @@ app.use(cookieParser());
 app.use('/', routes);
 
 // database connection
-var url = `mongodb+srv://admin:12345@cluster0.0cco4.mongodb.net/site-database?retryWrites=true&w=majority`;
+var url = `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.0cco4.mongodb.net/site-database?retryWrites=true&w=majority`;
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
  .then(() => console.log('Connected successfully to MongoDB!'))
  .catch(err => console.error('Something went wrong', err));

@@ -1,0 +1,113 @@
+.mainContainer {
+    display: flex;
+    margin-top: 7.5%;
+    justify-content: center;
+}
+.contactDetailsContainer {
+    padding: 1%;
+    color: white;
+    width: 33%;
+    height: 25rem;
+    background-image: url('/views/images/abstractdarkbackground.jpeg');
+}
+
+.contactDetailsContainer h2 {
+    margin-bottom: 4%;
+}
+
+.contactDetailsContainer p {
+    margin-bottom: 4%;
+}
+
+.contactFormContainer {
+    padding: 1%;
+    border: 1px solid gray;
+    height: 25rem;
+    width: 40%;
+}
+.contactFormContainer h2 {
+    margin-bottom: 3%;
+}
+
+.inputRowContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.inputRowContainer div{
+    margin-right: 15%;
+}
+.contactFormContainer textarea {
+    width: 100%;
+    height: 6rem;
+}
+
+.contactFormContainer textarea:focus {
+    outline: none;
+}
+
+.labelPlusInputContainer label{
+    display: block;
+    font-size: 12px;
+    margin-bottom: 2%;
+}
+.labelPlusInputContainer input{
+    width: 110%;
+    padding: 3%;
+    border: none;
+    border-bottom: 1px gray solid;
+    margin-bottom: 15%;
+    transition: 0.3s ease;
+}
+
+.labelPlusInputContainer input:focus {
+    border: none;
+    border-bottom: 1px rgb(73, 73, 73) solid;
+    outline: none;
+}
+
+.submitBtn {
+    background-color: rgb(73, 73, 73);
+    color: white;
+    border-radius: 10%;
+    margin-top: 10%;
+    font-size: 20px;
+    width: 25%;
+    height: 2.5rem;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.submitBtn:hover {
+    background-color: rgb(45,45,45);
+}
+
+@media (max-width: 800px) {
+    .mainContainer {
+        margin-top: 20%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contactDetailsContainer {
+        padding: 5%;
+        height: 33%;
+        width: 80%;
+    }
+
+    .contactFormContainer {
+        padding: 5%;
+        height: 33%;
+        width: 80%;
+    }
+
+    .labelPlusInputContainer input{
+        width: 135%;
+    }
+
+    .submitBtn {
+        width: 100%;
+    }
+}

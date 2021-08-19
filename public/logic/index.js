@@ -38,6 +38,7 @@ searchForm.addEventListener('submit', (e) => {
     let manufacturerInput = capitalize(document.querySelector('#manufacturerInput').value);
     let modelInput = capitalize(document.querySelector('#modelInput').value);
     let yearInput = document.querySelector('#yearInput').value;
+    let transmissionInput = document.querySelector('#transmissionInput').value;
     let fromInput = document.querySelector('#fromInput').value;
     let toInput = document.querySelector('#toInput').value;
 
@@ -71,6 +72,9 @@ searchForm.addEventListener('submit', (e) => {
         }
         if (yearInput !== "") {
             info['params']["year"] = yearInput;
+        }
+        if (transmissionInput !== "") {
+            info['params']["transmission"] = transmissionInput;
         }
 
         fetch('http://localhost:5000/getsomecars/', {
@@ -175,6 +179,3 @@ bookCar = (index, from, to) => {
         })
 
 }
-
-
-

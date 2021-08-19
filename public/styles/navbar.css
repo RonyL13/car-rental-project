@@ -8,6 +8,10 @@
     justify-content: space-between;
     align-items: center;
     height: 45px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: 0.5s ease;
 } 
 
  .navbar ul li {
@@ -29,7 +33,7 @@
     .navbar {
         flex-direction: column;
         justify-content: center;
-        height: 5rem;
+        padding: 2rem;
     }
 }
 

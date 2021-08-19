@@ -8,13 +8,13 @@ fetch('http://localhost:5000/getcustomerorders')
     } else {
         for (let i = 0; i < data['orders'].length; i++) {
             str += `<div class="order">
-                        <div class="orderDetailsContainer"
+                            <p>Order Id: ${data['orders'][i]['_id']}</p>
                             <p>Car name: ${data['cars'][i]['manufacturer']} ${data['cars'][i]['model']}</p>
                             <p>Reciveing date: ${data['orders'][i]['from'].split('T').shift()}</p> 
                             <p>Returning date: ${data['orders'][i]['to'].split('T').shift()}</p>
                             <p>Total number of days: ${data['orders'][i]['days']}</p>
                             <p>Total price: ${data['orders'][i]['totalPrice']} &#8362</p>
-                        </div>
+                        <img src="${data['cars'][i]['image']}" alt="Reserved car picture">
                         <div class="cancelOrderResultDiv"></div>
                         <button index="${data['orders'][i]['_id']}" class="cancelBtn" onclick="cancelOrder(this)">Cancel Order</button>
                     </div>`
@@ -29,6 +29,7 @@ fetch('http://localhost:5000/getcustomerorders')
 
 
 cancelOrder = (index) => {
+    if (window.confirm('Are you sure?')) {
     let orderId = index.getAttribute('index');
     fetch('http://localhost:5000/deleteorder', {
         method: 'DELETE',
@@ -55,5 +56,6 @@ cancelOrder = (index) => {
     .catch((err) => {
         console.log(err);
     })
+}
 }
 

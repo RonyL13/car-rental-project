@@ -4,7 +4,7 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/about">About</a></li>
-                <li><a href="/">Contact</a></li>
+                <li><a href="/contact">Contact</a></li>
                 <li><a href="/">FAQ</a></li>
             </ul>
         </div>
@@ -23,3 +23,16 @@
         </div>
     </nav>
 </div>
+<script>
+    var prevScrollpos = window.pageYOffset; // saves the current Y position of the page in pixels
+
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset; // saves the new Y position of the page in pixels after a scroll
+  if (prevScrollpos > currentScrollPos) { // if the new Y is lower than the previous Y the user scrolled up and the navbar is revealed
+    document.querySelector(".navbar").style.top = "0";
+  } else {
+    document.querySelector(".navbar").style.top = "-100px"; // else the user scrolled down and navbar is hidden
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>

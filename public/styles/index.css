@@ -6,7 +6,9 @@
     background-repeat: no-repeat;
     color: white;
 }
-
+.mainContainerFlavourText {
+    padding-top: 10%;
+}
 .mainContainer a {
     color: magenta;
     text-decoration: none;
@@ -65,10 +67,15 @@
     border: none;
     border-radius: 10%;
     background-color: gray;
-    border-bottom: 2px gray solid;
+    color: white;
+    padding: 1%;
     transition: 1s ease;
 }
-
+.searchInputsContainer select {
+    background-color: gray;
+    border-radius: 10%;
+    color: white;
+}
 .searchInputsContainer input:focus {
     border: none;
     outline: none;
@@ -129,9 +136,13 @@
 .labelPlusInputContainer input{
     display: block;
 }
+.labelPlusInputContainer select{
+    display: block;
+}
 
 .labelPlusInputContainer {
     margin-left: 5px;
+    padding: 0.5%;
 }
 
 .submitBtn {
@@ -143,7 +154,7 @@
     cursor: pointer;
     width: 10rem;
     height: 2rem;
-    margin: 2% 4% 0 4%;
+    margin: 1.5% 0 0 3%;
     transition: 0.3s ease;
 }
 

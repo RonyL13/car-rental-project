@@ -10,6 +10,7 @@
         </div>
         <div class="navbarRight">
             <% if (customer) { %>
+                <a href="/profile">Profile</a>
                 <a>welcome, <%= customer.name %></a>
                 <a href="/logout">Log Out</a>
             <% } else { %>

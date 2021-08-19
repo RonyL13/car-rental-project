@@ -73,27 +73,48 @@ module.exports = {
 
     async bookCar(info, customerToken) {
        try {
-           
+        // Find the requested car in the database
         const carResult = await Car.findById(info.id);
-        // Check if car is available
-        if((info['from'] <= carResult['booking']['to']) && (carResult['booking']['from'] <= info['to'])) {
-            return {msg: 'This car is unavailable'}
-        } else {
-            // Grab the customer database ID and store it in a variable
-            let customerId = jwt.verify(customerToken, 'rental project secret', (err, decodedToken) => {
-                return decodedToken.id; 
-            })
-            // Change the booking object to reflect the new booking
-            carResult['booking'] = {
-                isBooked: true,
-                by: customerId,
-                from: info['from'],
-                to: info['to']
-            }
+        // Check if car is available at given dates
+        for (let i = 0; i < carResult['bookings'].length; i++) {
+            if (info['from'] <= carResult['bookings'][i]['to'] && carResult['bookings'][i]['from'] <= info['to']) {
+                return {msg: 'This car is unavailable'};
+            } else {
+                // Grab and store the customer database ID
+                let customerId = jwt.verify(customerToken, 'rental project secret', (err, decodedToken) => {
+                    return decodedToken.id; 
+                })
+                carResult['bookings'].push({
+                    by: customerId,
+                    from: info['from'],
+                    to: info['to']
+                })
 
-            const x = await carResult.save();
-            return x;
+                const x = await carResult.save();
+                return x;
+            }
         }
+
+
+
+        // if((info['from'] <= carResult['bookings']['to']) && (carResult['bookings']['from'] <= info['to'])) {
+        //     return {msg: 'This car is unavailable'}
+        // } else {
+        //     // Grab the customer database ID and store it in a variable
+        //     let customerId = jwt.verify(customerToken, 'rental project secret', (err, decodedToken) => {
+        //         return decodedToken.id; 
+        //     })
+        //     // Change the booking object to reflect the new booking
+        //     carResult['bookings'] = {
+        //         isBooked: true,
+        //         by: customerId,
+        //         from: info['from'],
+        //         to: info['to']
+        //     }
+
+        //     const x = await carResult.save();
+        //     return x;
+        // }
     }
     catch(err) {
         console.log('this is err: ' + err);

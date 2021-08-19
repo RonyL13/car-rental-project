@@ -8,7 +8,7 @@ function getToday() {
 
     today = yyyy + '-' + mm + '-' + dd;
     return today;
- }
+}
 
 function getMaxDate() {
     let twoMonthsFromToday = new Date();
@@ -18,9 +18,9 @@ function getMaxDate() {
 
     twoMonthsFromToday = yyyy + '-' + mm + '-' + dd;
     return twoMonthsFromToday;
- }
+}
 console.log(getMaxDate(), getToday());
- // ========================================================
+// ========================================================
 
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -33,11 +33,11 @@ searchForm.addEventListener('submit', (e) => {
     let yearInput = document.querySelector('#yearInput').value;
     let fromInput = document.querySelector('#fromInput').value;
     let toInput = document.querySelector('#toInput').value;
-    console.log(toInput, fromInput);
-    if (fromInput > toInput) { // bigger = later smaller = before
+
+    if (fromInput > toInput) { // bigger = after smaller = before
         errors.push("Returning date can't be earlier than starting date");
-    } 
-    
+    }
+
     if (fromInput < getToday() || getMaxDate() < toInput) {
         errors.push('You can only select dates within the next two months');
     }
@@ -45,80 +45,81 @@ searchForm.addEventListener('submit', (e) => {
     if (errors.length > 0) {
         errorElement.innerText = errors.join('\n');
         document.querySelector('#resultsContainer').innerHTML = ''; // Reseting the results gallery 
-    }   else {
+    } else {
 
-    let info = {
-        params: {},
-        date: {
-            from: fromInput,
-            to: toInput
-        }
-    };
-
-    // Filter out the input fields that the user left empty
-    if (manufacturerInput !== "") {
-        info['params']['manufacturer'] = manufacturerInput;
-    }
-    if (modelInput !== "") {
-        info['params']["model"] = modelInput;
-    }
-    if (yearInput !== "") {
-        info['params']["year"] = yearInput;
-    }
-
-    fetch('http://localhost:5000/getsomecars/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(info)
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.length !== 0) {
-                document.querySelector('#resultsContainer').innerHTML = '';
-                // Creation of the result component and appending it to the results gallery
-                let carComponent = '';
-                for (let i = 0; i < data.length; i++) {
-                    // Checking to see if the selected date range overlaps with the current (if exists) booked date range
-                    if((info['date']['from'] <= data[i]['booking']['to']) && (data[i]['booking']['from'] <= info['date']['to'])) {
-                        carComponent += `<div class="booked">
-                                        <img src="${data[i]['image']}">
-                                        <p>Manufacturer: ${data[i]['manufacturer']}</p>
-                                        <p>Model: ${data[i]['model']}</p>
-                                        <p>Year: ${data[i]['year']}</p>
-                                        <p>Transmission: ${data[i]['transmission']}</p>
-                                        <p>Color: ${data[i]['color']}</p>
-                                        <p>Price per day: ${data[i]['price']} &#8362</p>
-                                        <p class="currUnavailable">Unavailable at given dates</p>
-                                    </div>`
-                    } else {
-                        carComponent += `<div class="carComponent">
-                                        <img src="${data[i]['image']}">
-                                        <p>Manufacturer: ${data[i]['manufacturer']}</p>
-                                        <p>Model: ${data[i]['model']}</p>
-                                        <p>Year: ${data[i]['year']}</p>
-                                        <p>Transmission: ${data[i]['transmission']}</p>
-                                        <p>Color: ${data[i]['color']}</p>
-                                        <p>Price per day: ${data[i]['price']} &#8362</p>
-                                        <button class="bookBtn" index="${data[i]['_id']}" onClick="bookCar(this, '${fromInput}', '${toInput}')">Book</button>
-                                    </div>`
-                    }
-                }
-                document.querySelector('#resultsContainer').innerHTML = carComponent;
-
-                // If no results found in DB return a message explaining that
-            } else {
-                document.querySelector('#resultsContainer').innerHTML = 'No results found, try widening your search parameters';
-
+        let info = {
+            params: {},
+            date: {
+                from: fromInput,
+                to: toInput
             }
-        })
-        // Fetch error handling
-        .catch((err) => {
-            console.log(`An error occured while trying to fetch data: ${err}`)
-        })
+        };
 
-}})
+        // Filter out the input fields that the user left empty
+        if (manufacturerInput !== "") {
+            info['params']['manufacturer'] = manufacturerInput;
+        }
+        if (modelInput !== "") {
+            info['params']["model"] = modelInput;
+        }
+        if (yearInput !== "") {
+            info['params']["year"] = yearInput;
+        }
+
+        fetch('http://localhost:5000/getsomecars/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(info)
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.length !== 0) {
+                    document.querySelector('#resultsContainer').innerHTML = '';
+                    // Creation of the result component and appending it to the results gallery
+                    let carComponent = '';
+                    for (let i = 0; i < data.length; i++) { // Outer loop iterates over the returned cars
+                        if (data[i]['bookings'].find(current => info['date']['from'] <= current['to'] && (current['from'] <= info['date']['to']))) { // The find searches for an occupied date and exits
+                            carComponent += `<div class="booked">
+                                <img src="${data[i]['image']}">
+                                <p>Manufacturer: ${data[i]['manufacturer']}</p>
+                                <p>Model: ${data[i]['model']}</p>
+                                <p>Year: ${data[i]['year']}</p>
+                                <p>Transmission: ${data[i]['transmission']}</p>
+                                <p>Color: ${data[i]['color']}</p>
+                                <p>Price per day: ${data[i]['price']} &#8362</p>
+                                <p class="currUnavailable">Unavailable at requested dates</p>
+                                </div>`
+                        } else { // If an occupied date isnt found find returns Undefined and this else is running
+                            carComponent += `<div class="carComponent">
+                                <img src="${data[i]['image']}">
+                                <p>Manufacturer: ${data[i]['manufacturer']}</p>
+                                <p>Model: ${data[i]['model']}</p>
+                                <p>Year: ${data[i]['year']}</p>
+                                <p>Transmission: ${data[i]['transmission']}</p>
+                                <p>Color: ${data[i]['color']}</p>
+                                <p>Price per day: ${data[i]['price']} &#8362</p>
+                                <button class="bookBtn" index="${data[i]['_id']}" onClick="bookCar(this, '${fromInput}', '${toInput}')">Book</button>
+                                </div>`
+                        }
+                    }
+
+                    document.querySelector('#resultsContainer').innerHTML = carComponent;
+                } else {
+                    // If no cars are found
+                    document.querySelector('#resultsContainer').innerHTML = 'No results found, try widening your search parameters';
+                }
+            }
+
+            )
+            // Fetch error handling
+            .catch((err) => {
+                console.log(`An error occured while trying to fetch data: ${err}`)
+            })
+
+    }
+})
 
 
 
@@ -144,6 +145,8 @@ bookCar = (index, from, to) => {
                 location.assign('/login')
             } else {
                 console.log(data);
+                index.disabled = true;
+
             }
         })
         .catch((err) => {
@@ -162,3 +165,9 @@ hideUnavailable = () => {
     let unavailableCars = document.querySelectorAll('.booked')
     unavailableCars.forEach(car => car.style.display = 'none')
 }
+
+
+
+
+
+

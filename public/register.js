@@ -4,7 +4,7 @@ let form = document.querySelector('#form')
 // Extracts info from form and puts it in an object. Afterwards this function will send a POST request using fetch api.
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    let errorElement = document.querySelector('#error')
+    let errorElement = document.querySelector('.errorContainer')
 
     let name = document.querySelector('#nameId').value;
     let password = document.querySelector('#passwordId').value;

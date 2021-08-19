@@ -35,7 +35,7 @@ const checkUser = (req, res, next) => {
     if (token) {
         jwt.verify(token, 'rental project secret', async (err, decodedToken) => {
             if (err) {
-                console.log(err.message);
+                console.log(`An error occured: ${err.message}`);
                 res.locals.customer = null;
                 next();
             } else {

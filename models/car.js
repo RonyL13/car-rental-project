@@ -37,6 +37,10 @@ const carsSchema = new mongoose.Schema({
       type: Number,
       required: [true, 'Missing field: Seats']
    },
+   price: {
+      type: Number,
+      required: [true, 'Missing field: Price']
+   },
    booking: {
       type: Object,
       required: [true, 'Missing field: booking'],

@@ -14,15 +14,15 @@
             </div>
             <div class="labelPlusInputContainer">
                 <label for="password">Password</label>
-                <input type="text" name="password" id="passwordId" required>
+                <input type="password" name="password" id="passwordId" required>
             </div>
             <div class="labelPlusInputContainer">
                 <label for="">Confirm password</label>
-                <input type="text" id="confirmId" required>
+                <input type="password" id="confirmId" required>
             </div>
             <div class="labelPlusInputContainer">
                 <label for="">Email address</label>
-                <input type="email" name="email" id="emailId" required>
+                <input type="email" name="email" id="emailId" required> 
             </div>
             <div class="labelPlusInputContainer">
                 <label for="">Phone number</label>
@@ -40,10 +40,11 @@
                     <option value="other">other</option>
                 </select>
             </div>
-            <div id="error"></div>
+            <div class="errorContainer"></div>
             <div class="submitContainer">
                 <button class="submitBtn" type="submit">Submit</button>
             </div>
+            <p>Already have an account? <a href="/login">Login</a></p>
         </form>
     </div>
 

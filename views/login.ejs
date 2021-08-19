@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include('./partials/head.ejs') %>
+    <link rel="stylesheet" href="styles/login.css">
 <body>
     <header>
     <%- include('./partials/navbar.ejs') %>
@@ -8,18 +9,19 @@
 
     <div class="formContainer">
         <form class="loginForm">
-            <div>
+            <div class="labelPlusInputContainer">
                 <label for="email">Email</label>
                 <input type="text" name="email" id="emailInput">
             </div>
-            <div>
+            <div class="labelPlusInputContainer">
                 <label for="password">Password</label>
-                <input type="text" name="password" id="passwordInput">
+                <input type="password" name="password" id="passwordInput">
             </div>
             <div class="errorContainer"></div>
             <div class="submitContainer">
-                <input type="submit">
+                <input type="submit" class="submitBtn">
             </div>
+            <p>No account yet? <a href="/register">Register</a></p>
         </form>
     </div>
     <script src="login.js"></script>

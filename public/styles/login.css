@@ -1,14 +1,11 @@
-#form {
-    margin: 10px;
-    width: 25em;
+.loginForm {
+    margin: auto;
+    margin-top: 10%;
+    width: 18em;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: solid black 1px;
     border-radius: 5%;
     padding: 10px;
-}
-
-.labelPlusInputContainer {
-    padding: 5px;
 }
 
 .labelPlusInputContainer label{
@@ -16,10 +13,6 @@
 }
 
 .labelPlusInputContainer input {
-    width: 100%;
-}
-
-.labelPlusInputContainer select {
     width: 100%;
 }
 
@@ -33,7 +26,8 @@
      color: rgb(65, 65, 138);
      border-radius: 15px;
      font-size: 15px;
-     padding: 8px 20px;
+     padding: 5px 10px;
+     margin: 5px 0px 5px 0px;
      border: none;
      cursor: pointer;
 }

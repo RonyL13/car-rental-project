@@ -13,3 +13,7 @@
     width: 20%;
     height: 20%;
 }
+
+.booked {
+    display: none;
+}

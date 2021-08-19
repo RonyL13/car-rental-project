@@ -34,15 +34,30 @@ searchForm.addEventListener('submit', (e) => {
             // Creation of the result component and appending it to the results gallery
             let carComponent = '';
             for (let i = 0; i < data.length; i++) {
-            carComponent += `<div >
-                                <img src="${data[i]['image']}">
-                                <p>Manufacturer: ${data[i]['manufacturer']}</p>
-                                <p>Model: ${data[i]['model']}</p>
-                                <p>Year: ${data[i]['year']}</p>
-                                <p>Transmission: ${data[i]['transmission']}</p>
-                                <p>Color: ${data[i]['color']}</p>
-                                <button class="bookBtn" index="${data[i]['_id']}" onClick="bookCar(this)">Book</button>
-                            </div>`
+                // Check if car is already booked
+                if (data[i]['booking']['isBooked'] === true) {
+                    carComponent += `<div class="booked">
+                                        <img src="${data[i]['image']}">
+                                        <p>Manufacturer: ${data[i]['manufacturer']}</p>
+                                        <p>Model: ${data[i]['model']}</p>
+                                        <p>Year: ${data[i]['year']}</p>
+                                        <p>Transmission: ${data[i]['transmission']}</p>
+                                        <p>Color: ${data[i]['color']}</p>
+                                        <p>Price per day: ${data[i]['price']} &#8362</p>
+                                        <button class="bookBtn" index="${data[i]['_id']}" onClick="bookCar(this)">Book</button>
+                                    </div>`
+                } else {
+                    carComponent += `<div>
+                                        <img src="${data[i]['image']}">
+                                        <p>Manufacturer: ${data[i]['manufacturer']}</p>
+                                        <p>Model: ${data[i]['model']}</p>
+                                        <p>Year: ${data[i]['year']}</p>
+                                        <p>Transmission: ${data[i]['transmission']}</p>
+                                        <p>Color: ${data[i]['color']}</p>
+                                        <p>Price per day: ${data[i]['price']} &#8362</p>
+                                        <button class="bookBtn" index="${data[i]['_id']}" onClick="bookCar(this)">Book</button>
+                                    </div>`
+                }
             }
             document.querySelector('#resultsContainer').innerHTML = carComponent;
 
@@ -83,4 +98,8 @@ bookCar = (index) => {
         console.log(`An error occured while attempting to fetch: ${err}`);
     })
     
+}
+
+showUnavailable = () => {
+    document.querySelector('.booked').style.display = 'block';
 }

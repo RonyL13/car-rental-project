@@ -1,52 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include('./partials/head.ejs') %>
-
+<link rel="stylesheet" href="styles/office.css">
 <body>
-    <p>Add a Car:</p>
+    <%- include('./partials/navbar.ejs') %>
+    <div class="sideMenu">
+        <a href="">Add</a>
+        <a href="">Update</a>
+        <a href="">Delete</a>
+        <a href=""></a>
+    </div>
+    <div class="statisticsContainer"></div>
+    <div class="addFormsContainer">
     <form id="addCarForm">
-        <div>
+        <h2>Add a Car:</h2>
+        <div class="labelPlusInputContainer">
             <label for="">Manufacturer</label>
             <input type="text" name="" id="manufacturerInput" required>
         </div>
-        <div>
+        <div class="labelPlusInputContainer">
             <label for="">Model</label>
             <input type="text" name="" id="modelInput" required>
         </div>
-        <div>
+        <div class="labelPlusInputContainer">
             <label for="">Year</label>
             <input type="number" name="" id="yearInput" required>
         </div>
-        <div>
+        <div class="labelPlusInputContainer">
             <label for="">Plate</label>
             <input type="text" name="" id="plateInput" required>
         </div>
-        <div>
+        <div class="labelPlusInputContainer">
             <label for="">Color</label>
             <input type="text" name="" id="colorInput" required>
         </div>
-        <div>
+        <div class="labelPlusInputContainer">
             <label for="seats">Seats</label>
             <input type="number" name="seats" id="seatsInput" required>
         </div>
-        <div>
+        <div class="labelPlusInputContainer">
             <label for="price">Price</label>
             <input type="number" name="price" id="priceInput" required>
         </div>
-        <div>
+        <div class="labelPlusInputContainer">
             <label for="transmission">Transmission</label>
             <select name="tansmission" id="transmissionInput">
                 <option value="Manual">Manual</option>
                 <option value="Automatic">Automatic</option>
             </select>
-            
         </div>
-        <div>
+        <div class="labelPlusInputContainer">
             <label for="">Image Source</label>
             <input type="text" name="" id="imageInput" required>
         </div>
-        <button type="submit">Add</button>
+        <button type="submit" class="submitBtn">Add</button>
     </form>
+    <h1>Add</h1>
+</div>
+<div class="deleteFormsContainer">
+    <div class="deleteCarFormContainer">
+        <form class="deleteCarForm">
+            <div class="labelPlusInputContainer">
+                <label for="idInput">Car ID:</label>
+                <input type="text" name="idInput" id="deleteCarInput">
+            </div>
+            <button type="submit" class="submitBtn">Delete</button>
+        </form>
+    </div>
+</div>
+    
     <script src="office.js"></script>
+
+    <%- include('./partials/footer.ejs') %>
 </body>
 </html>

@@ -76,6 +76,11 @@ const carsSchema = new mongoose.Schema({
       //    type: Date,
       //    required: [true, 'Missing field: to date']
       // }
+   },
+   timesBooked: {
+      type: Number,
+      required: true,
+      default: 0
    }
 
 

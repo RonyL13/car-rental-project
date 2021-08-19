@@ -19,11 +19,10 @@ router.get('/register/successful', (req, res) => {
 
 router.post('/register', async (req, res) => {
     const x = await myRepository.createCustomer(req.body); 
-    res.cookie('jwt', x.token, { httpOnly: true, maxAge: 200000});
-    res.json(x)
+    res.send(x)
 })
 
-router.post('/addcar', async (req, res) => {
+router.post('/addcar', isAdmin, async (req, res) => {
     const x = await myRepository.createCar(req.body);
     res.send(`added new car ${x} successfully`)
 })
@@ -38,7 +37,7 @@ router.post('/getsomecars' , async (req, res) => {
     res.send(x)
 })
 
-router.get('/office', authenticate, isAdmin , (req, res) => {
+router.get('/office', isAdmin , (req, res) => {
     res.render('office',  { title: 'Office' });
 })
 
@@ -66,4 +65,13 @@ router.get('/about', (req, res) => {
     res.render('about', { title: 'About' })
 })
 
+router.post('/statistics', async (req, res) => {
+    let x = await myRepository.getStatistics();
+    res.send(x);
+})
+
+router.delete('/deletecar', async (req, res) => {
+    let x = await myRepository.deleteCar(req.body);
+    res.send(x);
+})
 module.exports = router;

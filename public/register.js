@@ -58,11 +58,16 @@ form.addEventListener('submit', (e) => {
             if (data.status) {
                 window.location = './register/successful'
             } else {
-                alert(`This ${Object.keys(data.errorData)} is already taken`) // Error message indicating that a field is already in use
+                if(data.err.code === 11000) { // If duplication error occured
+                    alert(`This ${Object.keys(data.err.keyValue)} is already taken`) // Error message indicating that a field is already in use
+                }; 
+                if (data.err.errors.email) { // If email validation error occured
+                    alert(data.err.errors.email.message);
+                }
             }
         })
         .catch((error) => {
-        console.error('Error:', error);
+            console.error('Error:', error);
         })
         }});
 

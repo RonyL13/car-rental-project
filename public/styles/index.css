@@ -1,7 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Roboto+Slab:wght@100&family=Titillium+Web:wght@300&display=swap');
 .mainContainer {
-    font-family: 'Titillium Web', sans-serif; 
-    font-size: 20px;
     height: 30rem;
     text-align: center;
     background-image: url("https://wallpapercave.com/wp/wp2641466.jpg");

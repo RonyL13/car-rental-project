@@ -1,5 +1,7 @@
 let searchForm = document.querySelector('#searchForm');
 
+
+// Helper functions
 function getToday() {
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
@@ -19,17 +21,22 @@ function getMaxDate() {
     twoMonthsFromToday = yyyy + '-' + mm + '-' + dd;
     return twoMonthsFromToday;
 }
-console.log(getMaxDate(), getToday());
-// ========================================================
 
+
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+
+// ========================================================
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     let errors = [];
     let errorElement = document.querySelector('.errorContainer');
     errorElement.innerText = '';
-    let manufacturerInput = document.querySelector('#manufacturerInput').value;
-    let modelInput = document.querySelector('#modelInput').value;
+    let manufacturerInput = capitalize(document.querySelector('#manufacturerInput').value);
+    let modelInput = capitalize(document.querySelector('#modelInput').value);
     let yearInput = document.querySelector('#yearInput').value;
     let fromInput = document.querySelector('#fromInput').value;
     let toInput = document.querySelector('#toInput').value;
@@ -102,10 +109,12 @@ searchForm.addEventListener('submit', (e) => {
                                 <p>Price per day: ${data[i]['price']} &#8362</p>
                                 <button class="bookBtn" index="${data[i]['_id']}" onClick="bookCar(this, '${fromInput}', '${toInput}')">Book</button>
                                 </div>`
+                                
                         }
                     }
 
                     document.querySelector('#resultsContainer').innerHTML = carComponent;
+                    location.assign('#resultsContainer') // Scroll the user down to results
                 } else {
                     // If no cars are found
                     document.querySelector('#resultsContainer').innerHTML = 'No results found, try widening your search parameters';
@@ -146,7 +155,7 @@ bookCar = (index, from, to) => {
             } else {
                 console.log(data);
                 index.disabled = true;
-
+                location.assign(`/purchase?id=${carId}`)
             }
         })
         .catch((err) => {

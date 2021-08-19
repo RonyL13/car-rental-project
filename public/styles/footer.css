@@ -1,0 +1,36 @@
+.footerContainer {
+    margin-top: 5%;
+    height: 10rem;
+    width: 100%;
+    background-color: black;
+    color: gray;
+    font-size: 12px;
+}
+
+.columnContainers {
+    float: left;
+    margin: 1% 0 0 5%; /* top | right | bottom | left */
+}
+
+.columnContainers a{
+    display: block;
+  text-decoration: none;
+  color: gray;
+}
+
+.columnContainers h3 {
+    color: white;
+    margin-bottom: 5%;
+}
+.columnContainers h2 {
+    color: white;
+    margin-bottom: 5%;
+}
+
+.bold {
+    color: white;
+}
+
+.copyright {
+    margin-top: 25%;
+}

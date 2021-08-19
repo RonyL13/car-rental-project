@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { isEmail } = require('validator')
 const bcrypt = require('bcrypt')
 
 // The blueprint for customer collection documents
@@ -9,13 +10,16 @@ const bcrypt = require('bcrypt')
      },
      password: {
       type: String,
-      required: [true, 'Missing field: Password']
+      required: [true, 'Missing field: Password'],
+      minlength: [6, 'Password cannot be shorter than 6 characters'],
+      maxlength: [20, 'Password cannot exceed 12 characters']
      },
      email: {
         type: String,
         required: [true, 'Missing field: Email Address'],
         unique: true,
-        lowercase: true
+        lowercase: true,
+        validate: [isEmail, 'Enter a valid email']
      },
      phone: {
         type: String,
@@ -27,7 +31,13 @@ const bcrypt = require('bcrypt')
         required: [true, "Missing field: Driver's License"],
         unique: true
      },
-     gender: String
+     gender: String,
+
+     admin: {
+        type: Boolean,
+        required: [true, 'Missing field: Admin'],
+        default: false
+     }
 });
 
 // Using mongoose hooks and bcrypt to hash passwords

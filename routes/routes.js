@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const myRepository = require('../myRepository');
-const { authenticate, checkUser } = require('../middleware/authMiddleware');
+const { authenticate, checkUser, isAdmin } = require('../middleware/authMiddleware');
 
 router.get('*', checkUser); // Use specified middleware in all GET requests
 
@@ -38,7 +38,7 @@ router.post('/getsomecars' , async (req, res) => {
     res.send(x)
 })
 
-router.get('/office', authenticate , (req, res) => {
+router.get('/office', authenticate, isAdmin , (req, res) => {
     res.render('office',  { title: 'Office' });
 })
 
@@ -61,4 +61,9 @@ router.put('/bookcar', authenticate, async (req, res) => {
     const x = await myRepository.bookCar(req.body, req.cookies.jwt)
     res.send(x);
 })
+
+router.get('/about', (req, res) => {
+    res.render('about', { title: 'About' })
+})
+
 module.exports = router;

@@ -25,8 +25,8 @@ form.addEventListener('submit', (e) => {
         errors.push('Passwords do not match')
     }
 
-    if (password.length < 6 || password.length > 12) {
-        errors.push('Password must be between 6 and 12 characters long')
+    if (password.length < 6 || password.length > 20) {
+        errors.push('Password must be between 6 and 20 characters long')
     }
 
 

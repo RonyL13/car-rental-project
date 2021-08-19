@@ -50,4 +50,24 @@ const checkUser = (req, res, next) => {
         next();
     }
 }
-module.exports = { authenticate, checkUser };
+
+const isAdmin = (req, res, next) => {
+    const token = req.cookies.jwt;
+
+    if (token) {
+        jwt.verify(token, 'rental project secret', async (err, decodedToken) => {
+            if (err) {
+                console.log(`An error occured: ${err.message}`);
+                next();
+            } else {
+                let customer = await Customer.findById(decodedToken.id)
+                if (customer.admin) {
+                    next();
+                } else {
+                    res.redirect('/login')
+                }
+            }
+        })
+    }
+}
+module.exports = { authenticate, checkUser, isAdmin };

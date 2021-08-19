@@ -1,12 +1,10 @@
 .navContainer {
     background-color: black;
-    color: white;
 } 
 .navbar {
     display: flex;
     padding: 1% 2%;
     background-color: black;
-    color: white; 
     justify-content: space-between;
     align-items: center;
     height: 45px;

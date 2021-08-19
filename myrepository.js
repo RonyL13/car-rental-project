@@ -21,18 +21,20 @@ module.exports = {
             const newCustomer = new Customer(customerInfo);
             const token = createToken(newCustomer._id)
             const x = await newCustomer.save();
-            return { status: true,
-                     token: token };
+            return {
+                status: true,
+                token: token
+            };
         }
 
-        catch(err) {
+        catch (err) {
             console.log(err);
             return {
                 status: false,
                 errorData: err.keyValue
             };
         }
-     
+
     },
 
     // This function adds a new car to database
@@ -53,7 +55,7 @@ module.exports = {
     // This function returns the results based on the user's search parameters on the landing page search form
     async getCarByFilters(info) {
         const results = await Car.find(info.params)
-            return results;
+        return results;
     },
 
     // This function handles the login process 
@@ -61,28 +63,29 @@ module.exports = {
         try {
             const customer = await Customer.login(loginInfo);
             const token = createToken(customer._id)
-            return {customer: customer._id,
-                    token: token
-                }
+            return {
+                customer: customer._id,
+                token: token
+            }
         }
-        catch(err) {
+        catch (err) {
             console.log(`An error occured while attempting to login: ${err}`);
             return err;
         }
     },
 
     async bookCar(info, customerToken) {
-       try {
-        // Find the requested car in the database
-        const carResult = await Car.findById(info.id);
-        // Check if car is available at given dates
-        for (let i = 0; i < carResult['bookings'].length; i++) {
-            if (info['from'] <= carResult['bookings'][i]['to'] && carResult['bookings'][i]['from'] <= info['to']) {
-                return {msg: 'This car is unavailable'};
+        try {
+            // Find the requested car in the database
+            const carResult = await Car.findById(info.id);
+            // Check if car is available at given dates
+
+            if (carResult['bookings'].find(current => info['from'] <= current['to'] && current['from'] <= info['to'])) {
+                return { msg: 'This car is unavailable' };
             } else {
                 // Grab and store the customer database ID
                 let customerId = jwt.verify(customerToken, 'rental project secret', (err, decodedToken) => {
-                    return decodedToken.id; 
+                    return decodedToken.id;
                 })
                 carResult['bookings'].push({
                     by: customerId,
@@ -115,10 +118,10 @@ module.exports = {
         //     const x = await carResult.save();
         //     return x;
         // }
-    }
+    
     catch(err) {
         console.log('this is err: ' + err);
     }
-    }
+}
 }
 

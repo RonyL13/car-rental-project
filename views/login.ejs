@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+<body>
+    <header>
+    <%- include('./partials/navbar.ejs') %>
+    </header>
+
+    <div class="formContainer">
+        <form class="loginForm">
+            <div>
+                <label for="email">Email</label>
+                <input type="text" name="email" id="emailInput">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="text" name="password" id="passwordInput">
+            </div>
+            <div class="errorContainer"></div>
+            <div class="submitContainer">
+                <input type="submit">
+            </div>
+        </form>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>

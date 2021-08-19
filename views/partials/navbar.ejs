@@ -1,9 +1,20 @@
 <div class="navContainer">
     <nav class="navbar">
-        <ul>
-            <li><a href="http://localhost:5000/register">Test</a></li>
-            <li><a href="http://localhost:5000/register">About</a></li>
-            <li><a href="http://localhost:5000/register">Contact</a></li>
-        </ul>
+        <div class="navbarLeft">
+            <ul>
+                <li><a href="/">About Us</a></li>
+                <li><a href="/">Contact</a></li>
+                <li><a href="/">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="navbarRight">
+            <% if (customer) { %>
+                <a><%= customer.name %></a>
+                <a href="/logout">Log Out</a>
+            <% } else { %>
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            <% } %>
+        </div>
     </nav>
 </div>

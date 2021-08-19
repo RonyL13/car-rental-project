@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt')
 
 // The blueprint for customer collection documents
  const customersSchema = new mongoose.Schema({
@@ -28,6 +29,25 @@ const mongoose = require('mongoose');
      },
      gender: String
 });
+
+// Using mongoose hooks and bcrypt to hash passwords
+customersSchema.pre('save', async function (next) {
+   const salt = await bcrypt.genSalt();
+   this.password = await bcrypt.hash(this.password, salt);
+   next();
+}) 
+
+customersSchema.statics.login = async function(loginInfo) {
+   const customer = await this.findOne({email: loginInfo.email});
+   if (customer) {
+      const auth = await bcrypt.compare(loginInfo.password, customer.password)
+      if (auth) {
+         return customer;
+      }
+      throw Error ('Incorrect Email or Password')
+   }
+   throw Error('Incorrect Email or Password')
+}
 
 
 module.exports.Customer = mongoose.model('Customer', customersSchema);

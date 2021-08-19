@@ -1,7 +1,9 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router();
-const myRepository = require('../myRepository')
-const path = require('path')
+const myRepository = require('../myRepository');
+const { authenticate, checkUser } = require('../middleware/authMiddleware');
+
+router.get('*', checkUser); // Use specified middleware in all GET requests
 
 router.get('/', (req, res) => {
     res.render('index', { title: 'Home' })
@@ -16,7 +18,8 @@ router.get('/register/successful', (req, res) => {
 })
 
 router.post('/register', async (req, res) => {
-    const x = await myRepository.createCustomer(req.body); // X Will be either true or false
+    const x = await myRepository.createCustomer(req.body); 
+    res.cookie('jwt', x.token, { httpOnly: true, maxAge: 200000});
     res.json(x)
 })
 
@@ -35,10 +38,23 @@ router.post('/getsomecars' , async (req, res) => {
     res.send(x)
 })
 
-router.get('/office', (req, res) => {
-    res.render('office', { title: 'Office' })
+router.get('/office', authenticate , (req, res) => {
+    res.render('office',  { title: 'Office' });
 })
 
+router.get('/login', (req, res) => {
+    res.render('login', { title: 'Login' });
+})
 
+router.post('/login', async (req, res) => {
+    const x = await myRepository.customerLogin(req.body);
+    res.cookie('jwt', x.token, { httpOnly: true, maxAge: 200000});
+    res.send(x);
+})
+
+router.get('/logout', (req, res) => {
+    res.cookie('jwt', '', { maxAge: 1 }); // Sets the json web token to an empty string and make it expire after 1 ms (as good as deleteing it)
+    res.redirect('/'); // Redirect the user to the home page after log out
+})
 
 module.exports = router;

@@ -34,3 +34,5 @@ const carsSchema = new mongoose.Schema({
 });
 
  module.exports.Car = mongoose.model('Car', carsSchema);
+
+ // Add amount of seats, transmission type.

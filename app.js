@@ -1,7 +1,8 @@
-const express = require('express')
+const express = require('express');
 const app = express();
-const routes = require('./routes/routes.js')
-const mongoose = require('mongoose')
+const routes = require('./routes/routes.js');
+const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 
 // app.use((req, res, next) => {
 //     console.log('hello');
@@ -9,14 +10,13 @@ const mongoose = require('mongoose')
 // })
 
 // set the template engine for dynamic html content
-app.set('view engine', 'ejs')
-
-
-app.use(express.urlencoded({extended: true}))
-app.use(express.json());
+app.set('view engine', 'ejs');
 
 // middleware
-app.use(express.static('public'))
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+app.use(express.static('public'));
+app.use(cookieParser());
 
 // routing
 app.use('/', routes);
@@ -41,12 +41,3 @@ const port = process.env.PORT || 5000;
 app.listen(port, (req, res) => {
     console.log(`Server listening on port ${port}`);
 })
-
-
-
-// jwt library + bycript
-// Login system management
-
-//start with jwt
-
-//read about preventdefault send form

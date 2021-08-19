@@ -57,10 +57,13 @@ form.addEventListener('submit', (e) => {
             if (data.status) {
                 window.location = './register/successful'
             } else {
-                alert(`This ${Object.keys(data.errorData)} is already taken`)
+                alert(`This ${Object.keys(data.errorData)} is already taken`) // Error message indicating that a field is already in use
             }
         })
         .catch((error) => {
         console.error('Error:', error);
         })
         }});
+
+
+        

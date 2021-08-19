@@ -9,7 +9,7 @@
     padding: 1%;
     color: white;
     width: 33%;
-    height: 25rem;
+    height: 27rem;
     background-image: url('/views/images/abstractdarkbackground.jpeg');
 }
 
@@ -24,7 +24,7 @@
 .contactFormContainer {
     padding: 1%;
     border: 1px solid gray;
-    height: 25rem;
+    height: 27rem;
     width: 40%;
 }
 .contactFormContainer h2 {
@@ -83,6 +83,16 @@
 
 .submitBtn:hover {
     background-color: rgb(45,45,45);
+}
+
+.failure {
+    color: #D8000C;
+    background-color: #FFD2D2;
+}
+
+.success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
 }
 
 @media (max-width: 800px) {

@@ -6,9 +6,30 @@
     <%- include('./components/navbar.ejs') %>
     <section>
         <div class="mainContainer">
-            <h2>Frequently Asked Questions</h2>
+            <div class="assistanceContainer">
+                <h3>Need assistance?</h3>
+                <div class="assistance-line">
+                    <ion-icon name="call-outline"></ion-icon>
+                    <p>923 555 3102</p>
+                </div>
+                <div class="assistance-line">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <a href="/contact">Contact Us</a>
+                </div>
+                <div class="assistance-line work-hours">
+                    <h4>monday - Thursday</h4>
+                    <ion-icon name="time-outline"></ion-icon>
+                    <span>8:00 - 17:00 +2 GMT</span>
+                </div>
+                <div class="assistance-line work-hours">
+                    <h4>Friday</h4>
+                    <ion-icon name="time-outline"></ion-icon>
+                    <span>10:00 - 14:00 +2 GMT</span>
+                </div>
+            </div>
             <div class="accordion">
-                <h3>General</h3>
+                <fieldset class="generalContainer">
+                    <legend>General</legend>
                 <div class="accordion-item" id="question1">
                     <span onclick="toggleCard(this.parentElement)" class="accordion-link">
                         What services do you offer?
@@ -69,16 +90,18 @@
                         </p>
                     </div>
                 </div>
-                <h3>Pricing</h3>
+            </fieldset>
+            <fieldset>
+                <legend>Pricing</legend>
                 <div class="accordion-item" id="question4">
                     <span onclick="toggleCard(this.parentElement)" class="accordion-link">
-                        this is question 4 for now?
+                        What is the meaning of life?
                         <ion-icon name="add-outline" class="plus-icon"></ion-icon>
                         <ion-icon name="remove-outline" class="minus-icon"></ion-icon>
                     </span>
                     <div class="answer">
                         <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto aliquam culpa repellat cumque accusamus! Quae officia quod expedita obcaecati! Est harum, molestiae ipsa temporibus perferendis nostrum ea facere itaque quidem.
+                        42
                         </p>
                     </div>
                 </div>
@@ -108,6 +131,7 @@
                 </div>
             </div>
         </div>
+    </fieldset>
     </section>
     <%- include('./components/footer.ejs') %>
 

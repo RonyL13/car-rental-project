@@ -2,7 +2,7 @@ const customerModel = require('./models/customer')
 const carModel = require('./models/car')
 const orderModel = require('./models/order')
 const jwt = require('jsonwebtoken')
-
+const nodemailer = require('nodemailer')
 const Customer = customerModel.Customer
 const Car = carModel.Car
 const Order = orderModel.Order
@@ -45,11 +45,11 @@ module.exports = {
         try {
             const newCar = new Car(carInfo);
             const x = await newCar.save();
-            return {msg: `Added new car successfully`};
+            return { msg: `Added new car successfully` };
         }
-        catch(err) {
+        catch (err) {
             console.log(err);
-            return {msg: `${Object.keys(err.keyValue)} number ${Object.values(err.keyValue)} already exists`};
+            return { msg: `${Object.keys(err.keyValue)} number ${Object.values(err.keyValue)} already exists` };
         }
     },
 
@@ -125,12 +125,12 @@ module.exports = {
 
 
                 // Saving our new order
-                 const newOrder = await new Order(order)
-                 const y =  await newOrder.save()
+                const newOrder = await new Order(order)
+                const y = await newOrder.save()
 
                 // // Updating the car database to show new occupied dates
-                 const x = await carResult.save();
-                 return x;
+                const x = await carResult.save();
+                return x;
             }
         }
 
@@ -177,10 +177,14 @@ module.exports = {
         statistics.customers = customerCount;
         statistics.cars = carCount;
         statistics.orders = orderCount
-        statistics.mostBookedCar = {car: `${mostBooked['manufacturer']} ${mostBooked['model']}`,
-                                    numberOfBookings: `${mostBooked['timesBooked']}`};
-        statistics.leastBookedCar = {car: `${leastBooked['manufacturer']} ${leastBooked['model']}`,
-                                    numberOfBookings: `${leastBooked['timesBooked']}`};
+        statistics.mostBookedCar = {
+            car: `${mostBooked['manufacturer']} ${mostBooked['model']}`,
+            numberOfBookings: `${mostBooked['timesBooked']}`
+        };
+        statistics.leastBookedCar = {
+            car: `${leastBooked['manufacturer']} ${leastBooked['model']}`,
+            numberOfBookings: `${leastBooked['timesBooked']}`
+        };
 
         //let cars = await Car.find({});
 
@@ -190,11 +194,11 @@ module.exports = {
 
     async deleteCar(info) {
         try {
-        let carId = info.deleteInput
-        let deleted = await Car.deleteOne({_id: carId})
-        return deleted;
+            let carId = info.deleteInput
+            let deleted = await Car.deleteOne({ _id: carId })
+            return deleted;
         }
-        catch(err) {
+        catch (err) {
             console.log(err);
             return err;
         }
@@ -203,11 +207,11 @@ module.exports = {
     async deleteCustomer(info) {
         try {
             let customerId = info.deleteInput
-            let deleted = await Customer.deleteOne({_id: customerId})
+            let deleted = await Customer.deleteOne({ _id: customerId })
             console.log(deleted);
             return deleted;
         }
-        catch(err) {
+        catch (err) {
             console.log(err);
             return err;
         }
@@ -219,7 +223,7 @@ module.exports = {
             const newAdmin = new Customer(adminInfo);
             const token = createToken(newAdmin._id)
             const x = await newAdmin.save();
-            return {x};
+            return { x };
         }
 
         catch (err) {
@@ -230,23 +234,23 @@ module.exports = {
 
     async updateCar(updateInfo) {
         try {
-            let carResult = await Car.findOneAndUpdate({_id: updateInfo.id}, updateInfo)
-            return {msg : 'Car successfully updated'};
+            let carResult = await Car.findOneAndUpdate({ _id: updateInfo.id }, updateInfo)
+            return { msg: 'Car successfully updated' };
         }
-        catch(err) {
+        catch (err) {
             console.log(err);
-            return {msg: 'Failed to update car, Check ID'};
+            return { msg: 'Failed to update car, Check ID' };
         }
     },
 
     async updateCustomer(updateInfo) {
         try {
-            let customerResult = await Customer.findOneAndUpdate({_id: updateInfo.id}, updateInfo)
-            return {msg : 'Customer successfully updated'};
+            let customerResult = await Customer.findOneAndUpdate({ _id: updateInfo.id }, updateInfo)
+            return { msg: 'Customer successfully updated' };
         }
-        catch(err) {
+        catch (err) {
             console.log(err);
-            return {msg: 'Failed to update customer, Check ID'};
+            return { msg: 'Failed to update customer, Check ID' };
         }
     },
 
@@ -254,16 +258,16 @@ module.exports = {
         try {
             let adminResult = await Customer.findById(updateInfo.id)
             if (adminResult.admin === true) {
-                let x = await adminResult.updateOne({admin: false})
-                return {msg: 'Admin privileges removed'}
+                let x = await adminResult.updateOne({ admin: false })
+                return { msg: 'Admin privileges removed' }
             } else if (adminResult.admin === false) {
-                let x = await adminResult.updateOne({admin: true})
-                return {msg: 'Admin privileges given'}
+                let x = await adminResult.updateOne({ admin: true })
+                return { msg: 'Admin privileges given' }
             }
         }
-        catch(err) {
+        catch (err) {
             console.log(err);
-            return {msg: 'Something went wrong'}
+            return { msg: 'Something went wrong' }
         }
     },
 
@@ -283,7 +287,7 @@ module.exports = {
                 cars: carsOrdered
             }
         }
-        catch(err) {
+        catch (err) {
             console.log(err);
             return err;
         }
@@ -296,11 +300,11 @@ module.exports = {
             let carOrdered = await Car.findById(order['car'])
 
             // Deleting the order
-            let deleted = await Order.deleteOne({_id: orderId.id})
+            let deleted = await Order.deleteOne({ _id: orderId.id })
 
             // Since the booking did not come to pass we reduce the timesBooked field
             carOrdered['timesBooked']--;
-   
+
             // Removing the booking from the car document bookings 
             for (let i = 0; i < carOrdered['bookings'].length; i++) {
                 if (order['from'] == carOrdered['bookings'][i]['from']) {
@@ -310,12 +314,62 @@ module.exports = {
             // Saving the car document after changes
             let x = await carOrdered.save();
 
-            return ({msg: 'Order Successfully Deleted'})
+            return ({ msg: 'Order Successfully Deleted' })
         }
-        catch(err) {
+        catch (err) {
             console.log(err);
             return err;
         }
+    },
+
+    async sendEmail(body) {
+        try {
+            const output = `
+        <p>You have a new contact message</p>
+        <h3>Contact Detail</h3>
+        <ul>
+            <li>First name: ${body.fname}</li>
+            <li>Last name: ${body.lname}</li>
+            <li>Email: ${body.email}</li>
+            <li>Phone number: ${body.phone}</li>
+        </ul>
+        <h3>Message</h3>
+        <p>${body.comment}</p>
+        `;
+
+            // create reusable transporter object using the default SMTP transport
+            let transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: process.env.EMAIL, // generated ethereal user
+                    pass: process.env.EMAILPASS, // generated ethereal password
+                },
+                tls: {
+                    rejectUnauthorized: false
+                }
+            });
+
+            // send mail with defined transport object
+            let info = await transporter.sendMail({
+                from: body.email, // sender address
+                to: "rentalsproject22@gmail.com", // list of receivers
+                subject: "Hello ✔", // Subject line
+                text: "Hello world?", // plain text body
+                html: output, // html body
+            });
+
+            console.log("Message sent: %s", info.messageId);
+            console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+
+            return { msg: 'Message sent successfully' }
+        }
+        catch (err) {
+            console.log(err);
+            return err;
+        }
+
     }
+
+
 }
 

@@ -22,31 +22,34 @@
                 <div class="inputRowContainer">
                     <div class="labelPlusInputContainer">
                         <label for="">First Name</label>
-                        <input type="text" placeholder="Enter your first name">
+                        <input type="text" name="fname" placeholder="Enter your first name" class="fname">
                     </div>
                     <div class="labelPlusInputContainer">
                         <label for="">Last Name</label>
-                        <input type="text" placeholder="Enter your last name">
+                        <input type="text" name="lname" placeholder="Enter your last name" class="lname">
                     </div>
                 </div>
                 <div class="inputRowContainer">
                     <div class="labelPlusInputContainer">
                         <label for="">Email</label>
-                        <input type="email" placeholder="Enter your email address">
+                        <input type="email" name="email" placeholder="Enter your email address" class="email">
                     </div>
                     <div class="labelPlusInputContainer">
                         <label for="">Phone Number</label>
-                        <input type="text" placeholder="Enter your phone number">
+                        <input type="text" name="phone" placeholder="Enter your phone number" class="phone">
                     </div>
                 </div>
                 <div class="labelPlusInputContainer">
                     <label for=""></label>
-                    <textarea name="comment" form="contactform" placeholder="Write a message..."></textarea>
+                    <textarea name="comment" form="contactform" placeholder="Write a message..." class="comment"></textarea>
                 </div>
+                <div class="resultContainer"></div>
                 <input type="submit" class="submitBtn">
             </form>
         </div>
     </div>
     <%- include('./components/footer.ejs') %>
+
+    <script src="logic/contact.js"></script>
 </body>
 </html>

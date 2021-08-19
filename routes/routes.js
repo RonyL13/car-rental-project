@@ -18,6 +18,9 @@ router.get('/', (req, res) => {
 router.get('/views/images/fadingbackground.png', (req, res) => {
     res.sendFile(path.join(__dirname+'/../views/images/fadingbackground.png'))
 })
+router.get('/views/images/fadingbackground1.png', (req, res) => {
+    res.sendFile(path.join(__dirname+'/../views/images/fadingbackground1.png'))
+})
 router.get('/views/images/bluecar.png', (req, res) => {
     res.sendFile(path.join(__dirname+'/../views/images/bluecar.png'))
 })
@@ -84,6 +87,11 @@ router.get('/login', (req, res) => {
 router.post('/login', async (req, res) => {
     const x = await myRepository.customerLogin(req.body);
     res.cookie('jwt', x.token, { httpOnly: true, maxAge: 200000000});
+    res.send(x);
+})
+
+router.post('/send', async (req, res) => {
+    const x = await myRepository.sendEmail(req.body);
     res.send(x);
 })
 

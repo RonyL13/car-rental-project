@@ -22,7 +22,7 @@ body {
 }
 
 .infoDetailsTitle {
-    background-color: rgb(45, 45, 45);
+    background-color: #003554;
     color: white;
     padding: 1%;
 }
@@ -35,7 +35,7 @@ body {
     margin: 2%;
 }
 .photoContainer p {
-    background-color: rgb(45, 45, 45);
+    background-color: #003554;
     color: white;
     padding: 3%;
 }
@@ -57,7 +57,7 @@ body {
 }
 
 .sideMenuContainer {
-    background-color: rgb(45, 45, 45);
+    background-color: #003554;
     width: 20%;
     padding-bottom: 100%;
 }
@@ -73,7 +73,7 @@ body {
     padding: 0.5% 0 0.5% 0;
     width: 98%;
     margin: auto;
-    background-color: rgb(45, 45, 45);
+    background-color: #003554;
     color: white;
     margin-bottom: 1%;
 }

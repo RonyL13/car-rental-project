@@ -1,4 +1,47 @@
-let addCarForm = document.querySelector('#addCarForm')
+openOptions = (selectedOption) => { // Argument passed is the card that was clicked
+    let options = document.querySelectorAll('.option-item') // Grab all cards in the DOM
+    options.forEach(function(option) {      // Iterate over all cards
+        if (option === selectedOption) {    // Check every card if it is the one that was selected
+            if (option.children[1].style.maxHeight === '20rem') { // If the selected card is closed, open it,  and vice versa
+                option.children[1].style.maxHeight = '0';
+                option.children[0].children[1].style.display = 'block'
+                option.children[0].children[2].style.display = 'none'
+            } else {
+                option.children[1].style.maxHeight = '20rem';
+                option.children[0].children[1].style.display = 'none'
+                option.children[0].children[2].style.display = 'block'
+            }
+        } else { // Close all other cards
+            option.children[1].style.maxHeight = '0';
+            option.children[0].children[1].style.display = 'block'
+            option.children[0].children[2].style.display = 'none'
+        }
+    })
+}
+
+showSelectedForm = (selectedForm) => {
+    let forms = document.querySelectorAll('.form');
+    let selectedFormName = selectedForm.getAttribute('show');
+    forms.forEach(form => {
+        console.log(selectedFormName + ' form');
+        if (form.getAttribute('class') === selectedFormName + ' form') {
+            form.style.display = 'block'
+        } else {
+            form.style.display = 'none'
+        }
+    })
+}
+
+
+// card.children[1] is the answer div
+// card.children[0] is the answer div
+
+
+
+
+
+
+let addCarForm = document.querySelector('.addCarForm')
 addCarForm.addEventListener('submit', (e) => {
     e.preventDefault();
     let manufacturerInput = document.querySelector('#manufacturerInput').value;

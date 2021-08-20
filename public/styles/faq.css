@@ -77,10 +77,6 @@ section {
     cursor: pointer;
 }
 
-.accordion-link i {
-    padding: 0.5rem;
-}
-
 .minus-icon {
     display: none;
 }

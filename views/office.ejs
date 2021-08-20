@@ -5,12 +5,65 @@
 
     <body>
         <%- include('./components/navbar.ejs') %>
+        <div class="main-container">
+        <div class="side-menu-container">
+            <div class="side-menu">
+                <h2>Side Menu</h2>
+                <div class="options-container">
+                    <div class="option-item">
+                        <div class="option" onclick="openOptions(this.parentElement)">
+                            <p>Add</p>
+                            <ion-icon name="caret-back-outline"></ion-icon>
+                            <ion-icon name="caret-down-outline" class="down-icon"></ion-icon>
+                        </div>
+                        <div class="suboptions">
+                            <div show="addCarForm" onclick="showSelectedForm(this)">Add a car</div>
+                            <div show="addCustomerForm" onclick="showSelectedForm(this)">Add a customer</div>
+                            <div show="addAdminForm" onclick="showSelectedForm(this)">Add an admin</div>
+                        </div>
+                    </div>
+                    <div class="option-item">
+                        <div class="option" onclick="openOptions(this.parentElement)">
+                            <p>Update</p>
+                            <ion-icon name="caret-back-outline"></ion-icon>
+                            <ion-icon name="caret-down-outline" class="down-icon"></ion-icon>
+                        </div>
+                        <div class="suboptions">
+                            <div show="updateCarFormContainer" onclick="showSelectedForm(this)">Update a car</div>
+                            <div show="updateCustomerFormContainer" onclick="showSelectedForm(this)">Update a customer</div>
+                            <div show="updateAdminFormContainer" onclick="showSelectedForm(this)">Update an admin</div>
+                        </div>
+                    </div>
+                    <div class="option-item">
+                        <div class="option" onclick="openOptions(this.parentElement)">
+                            <p>Delete</p>
+                            <ion-icon name="caret-back-outline"></ion-icon>
+                            <ion-icon name="caret-down-outline" class="down-icon"></ion-icon>
+                        </div>
+                        <div class="suboptions">
+                            <div show="deleteCarFormContainer" onclick="showSelectedForm(this)">Delete a car</div>
+                            <div show="deleteCustomerFormContainer" onclick="showSelectedForm(this)">Delete a customer</div>
+                        </div>
+                    </div>             
+                    <div class="option-item">
+                        <div class="option" onclick="openOptions(this.parentElement)">
+                            <p>Add</p>
+                            <ion-icon name="caret-back-outline"></ion-icon>
+                            <ion-icon name="caret-down-outline" class="down-icon"></ion-icon>
+                        </div>
+                        <div class="suboptions">
+                            
+                        </div>
+                    </div>            
+                 </div>
+            </div>
+        </div>
+        <div class="statistics-and-forms-container">
             <div class="statisticsSection">
                 <div class="statsDiv"></div>
             </div>
-            <div id="addFormsContainer" class="addFormsContainer">
                 <div class="addCarFormContainer">
-                    <form id="addCarForm">
+                    <form class="addCarForm form">
                         <h2 class="formTitle">Add a Car:</h2>
                         <div class="labelPlusInputContainer">
                             <label for="">Manufacturer</label>
@@ -57,7 +110,7 @@
                     </form>
                 </div>
                 <div class="addCustomerFormContainer">
-                    <form class="addCustomerForm">
+                    <form class="addCustomerForm form">
                         <h2 class="formTitle">Add a Customer</h2>
                         <div class="labelPlusInputContainer">
                             <label for="name">Full name</label>
@@ -98,7 +151,7 @@
                     </form>
                 </div>
                 <div class="addAdminFormContainer">
-                    <form class="addAdminForm">
+                    <form class="addAdminForm form">
                         <h2>Add Admin</h2>
                         <div class="labelPlusInputContainer">
                             <label for="adminName">Full name</label>
@@ -137,14 +190,7 @@
                         <button class="submitBtn" type="submit">Add</button>
                     </form>
                 </div>
-                <div class="addTitle">
-                    <h1>ADD</h1>
-                </div>
-            </div>
-            <div id="deleteFormsContainer" class="deleteContainer">
-                <h1>DELETE</h1>
-                <div class="deleteFormsContainer">
-                    <div class="deleteCarFormContainer">
+                    <div class="deleteCarFormContainer form">
                         <form class="deleteCarForm">
                             <h3>Delete Car</h3>
                             <div class="labelPlusInputContainer">
@@ -155,7 +201,7 @@
                             <button type="submit" class="submitBtn">Delete</button>
                         </form>
                     </div>
-                    <div class="deleteCustomerFormContainer">
+                    <div class="deleteCustomerFormContainer form">
                         <form class="deleteCustomerForm">
                             <h3>Delete Customer</h3>
                             <div class="labelPlusInputContainer">
@@ -166,11 +212,8 @@
                             <button type="submit" class="submitBtn">Delete</button>
                         </form>
                     </div>
-                </div>
-            </div>
-            <div class="updateContainer">
-                <div class="updateFormsContainer" id="updateFormsContainer">
-                    <div class="updateCarFormContainer">
+
+                    <div class="updateCarFormContainer form">
                         <form class="updateCarForm">
                             <h2 class="formTitle">Update a Car:</h2>
                             <div class="labelPlusInputContainer">
@@ -222,7 +265,7 @@
                             <button type="submit" class="submitBtn">Update</button>
                         </form>
                     </div>
-                    <div class="updateCustomerFormContainer">
+                    <div class="updateCustomerFormContainer form">
                         <form class="updateCustomerForm">
                             <h2 class="formTitle">Update a Customer</h2>
                             <div class="labelPlusInputContainer">
@@ -260,7 +303,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="updateAdminFormContainer">
+                    <div class="updateAdminFormContainer form">
                         <form class="updateAdminForm">
                             <h3>Update Admin Status</h3>
                             <div class="labelPlusInputContainer">
@@ -272,15 +315,11 @@
                         </form>
                     </div>
                 </div>
-
-                <div class="updateTitle">
-                    <h1>UPDATE</h1>
-                </div>
             </div>
-
             <script src="logic/office.js"></script>
             <script src="logic/register.js"></script>
-
+            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
             <%- include('./components/footer.ejs') %>
     </body>
 

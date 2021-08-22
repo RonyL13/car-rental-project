@@ -5,50 +5,52 @@
 <body>
     <%- include('./components/navbar.ejs') %>
 
-    <div class="formContainer">
+    <div class="form-container">
         <form class="addCustomerForm">
-            <h2>Register</h2>
-            <div class="labelPlusInputContainer">
-                <label for="name">Full name</label>
-                <input type="text" name="name" id="nameId" required>
+            <div class="form-titles">
+                <ion-icon name="person-circle"></ion-icon>
+                <h2>Register</h2>
             </div>
-            <div class="labelPlusInputContainer">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="passwordId" required>
-            </div>
-            <div class="labelPlusInputContainer">
-                <label for="">Confirm password</label>
-                <input type="password" id="confirmId" required>
-            </div>
-            <div class="labelPlusInputContainer">
-                <label for="">Email address</label>
-                <input type="email" name="email" id="emailId" required> 
-            </div>
-            <div class="labelPlusInputContainer">
-                <label for="">Phone number</label>
-                <input type="text" name="phone" id="phoneId" required>
-            </div>
-            <div class="labelPlusInputContainer">
-                <label for="">Driver's license</label>
-                <input type="text" name="dl" id="dlId" required>
-            </div>
-            <div class="labelPlusInputContainer">
-                <label for="">Gender</label>
-                <select name="" id="genderId">
-                    <option value="male">male</option>
-                    <option value="female">female</option>
-                    <option value="other">other</option>
-                </select>
+            <div class="form-inputs-container">
+                <div class="input-container">
+                    <input type="text" name="name" id="nameId" placeholder="Full Name" required>
+                </div>
+                <div class="input-container">
+                    <input type="password" name="password" id="passwordId" placeholder="Password" required>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="confirmId" placeholder="Confirm Password" required>
+                </div>
+                <div class="input-container">
+                    <input type="email" name="email" id="emailId" placeholder="Email Address" required> 
+                </div>
+                <div class="input-container">
+                    <input type="text" name="phone" id="phoneId" placeholder="Phone Number" required>
+                </div>
+                <div class="input-container">
+                    <input type="text" name="dl" id="dlId" placeholder="Driver's License" required>
+                </div>
+                <div class="input-container">
+                    <select name="" id="genderId">
+                        <option value="male">male</option>
+                        <option value="female">female</option>
+                        <option value="other">other</option>
+                    </select>
+                </div>
             </div>
             <div class="addCustomerErrorContainer"></div>
             <div class="submitContainer">
-                <button class="submitBtn" type="submit">Submit</button>
+                <button class="submitBtn" type="submit">Register</button>
             </div>
-            <p>Already have an account? <a href="/login">Login</a></p>
+            <div class="form-footer">
+                <p>Already have an account? <a href="/login">Sign In</a></p>
+            </div>
         </form>
     </div>
     <%- include('./components/footer.ejs') %>
 
     <script src="logic/register.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

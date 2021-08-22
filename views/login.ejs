@@ -9,22 +9,30 @@
 
     <div class="formContainer">
         <form class="loginForm">
-            <div class="labelPlusInputContainer">
-                <label for="email">Email</label>
-                <input type="text" name="email" id="emailInput">
+            <div class="form-titles">
+                <ion-icon name="person-circle"></ion-icon>
+                <h1>Sign In</h1>
             </div>
-            <div class="labelPlusInputContainer">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="passwordInput">
+            <div class="form-inputs-container">
+                <div class="input-container">
+                    <input type="text" name="email" id="emailInput" placeholder="Enter Your Email">
+                </div>
+                <div class="input-container">
+                    <input type="password" name="password" id="passwordInput" placeholder="Enter Your Password">
+                </div>
+                <div class="errorContainer"></div>
+                <div class="submitContainer">
+                    <input type="submit" class="submitBtn" value="Sign In">
+                </div>
             </div>
-            <div class="errorContainer"></div>
-            <div class="submitContainer">
-                <input type="submit" class="submitBtn">
+            <div class="form-footer">
+                <p>Not a Member? <a href="/register">Create an account</a></p>
             </div>
-            <p>No account yet? <a href="/register">Register</a></p>
         </form>
     </div>
     <%- include('./components/footer.ejs') %>
     <script src="logic/login.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

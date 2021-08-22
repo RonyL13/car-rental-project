@@ -1,49 +1,114 @@
-.formContainer {
-    padding-top: 3%;
+.addCustomerForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form-titles {
+    text-align: center;
+    padding-top: 2%;
+}
+
+.form-titles ion-icon{
+    font-size: 60px;
+    color: hsl(200, 100%, 50%);
 }
 
 .addCustomerForm {
+    background-color: hsl(200, 100%, 100%);
     margin: auto;
-    margin-top: 2%;
-    width: 25em;
+    margin-top: 8%;
+    width: 24rem;
+    height: 35rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border: solid black 1px;
-    border-radius: 5%;
-    padding: 10px;
+    position: relative;
 }
-
-.labelPlusInputContainer {
+.form-inputs-container {
+    padding-top: 1%;
+}
+.input-container {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 2%;
+}
+.input-container input {
+    border: none;
+    background-color: hsl(0, 0%, 85%);
+    height: 2rem;
+    width: 100%;
     padding: 5px;
 }
-
-.labelPlusInputContainer label{
-    display: block;
+.input-container input:focus {
+    border: none;
+    outline: none;
 }
 
-.labelPlusInputContainer input {
+.input-container input::placeholder {
+    color: white;
+}
+.input-container select {
+    border: none;
+    background-color: hsl(0, 0%, 85%);
+    color: white;
+    height: 2rem;
     width: 100%;
+    padding: 5px;
+}
+.input-container select:focus {
+    border: none;
+    outline: none;
 }
 
-.labelPlusInputContainer select {
-    width: 100%;
+.addCustomerErrorContainer {
+    padding: 1%;
+    font-size: 16px;
+    color: hsl(200, 100%, 50%);
 }
 
 .submitContainer {
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin-bottom: 5%;
 }
 
 .submitBtn {
-     background-color: rgb(248, 218, 98);
-     color: rgb(65, 65, 138);
-     border-radius: 15px;
-     font-size: 15px;
-     padding: 8px 20px;
+    background-color: hsl(200, 100%, 50%);
+    color: white;
+    border-radius: 5%;
+     width: 80%;
+     padding: 2.5%;
      border: none;
      cursor: pointer;
 }
 
-.addCustomerErrorContainer {
-    font-size: 16px;
-    color: magenta;
+
+.form-footer {
+    font-size: 12px;
+    background-color: hsl(0, 0%, 85%);
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-footer a {
+    color: hsl(200, 100%, 50%);
+    text-decoration: none;
+}
+
+.footerContainer {
+    margin-top: 15%;
+}
+
+@media (max-width: 800px) {
+
+    .addCustomerForm {
+        margin-top: 20%;
+    }
+
+    .footerContainer {
+        margin-top: 30%;
+    }
 }

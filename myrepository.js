@@ -31,10 +31,6 @@ module.exports = {
 
         catch (err) {
             console.log({ err });
-            // return {
-            //     status: false,
-            //     errorData: err.keyValue
-            // };
             return { err }
         }
 
@@ -53,18 +49,16 @@ module.exports = {
         }
     },
 
-    // This function returns all cars in database
-    // async getAllCars() {
-    //    const allCars =  await Car.find({})
-    //     return allCars;
-    // },
-
-
-
     // This function returns the results based on the user's search parameters on the landing page search form
     async getCarByFilters(info) {
+        try {
         const results = await Car.find(info.params)
         return results;
+        }
+        catch(err) {
+            console.log(err);
+            return err;
+        }
     },
 
     // This function handles the login process 

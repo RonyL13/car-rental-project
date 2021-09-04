@@ -18,7 +18,7 @@ sendForm.addEventListener('submit', (e) => {
         comment: msgInput
     }
 
-    fetch('http://localhost:5000/send', {
+    fetch('/send', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

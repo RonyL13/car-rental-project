@@ -32,15 +32,6 @@ showSelectedForm = (selectedForm) => {
     })
 }
 
-
-// card.children[1] is the answer div
-// card.children[0] is the answer div
-
-
-
-
-
-
 let addCarForm = document.querySelector('.addCarForm')
 addCarForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -75,7 +66,7 @@ addCarForm.addEventListener('submit', (e) => {
             image: imageInput
         }
 
-        fetch('http://localhost:5000/addcar', {
+        fetch('/addcar', {
 
             method: 'POST',
             headers: {
@@ -102,7 +93,7 @@ addCarForm.addEventListener('submit', (e) => {
 });
 
 
-fetch('http://localhost:5000/statistics', {
+fetch('/statistics', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
@@ -168,7 +159,7 @@ addAdminForm.addEventListener('submit', (e) => {
             admin: true
         }
 
-        fetch('http://localhost:5000/addadmin', {
+        fetch('/addadmin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -204,7 +195,7 @@ deleteCarForm.addEventListener('submit', (e) => {
 
     let deleteInput = document.querySelector('#deleteCarInput').value;
 
-    fetch('http://localhost:5000/deletecar', {
+    fetch('/deletecar', {
 
         method: 'DELETE',
         headers: {
@@ -235,7 +226,7 @@ deleteCustomerForm.addEventListener('submit', (e) => {
 
     let deleteInput = document.querySelector('#deleteCustomerInput').value;
 
-    fetch('http://localhost:5000/deletecustomer', {
+    fetch('/deletecustomer', {
 
         method: 'DELETE',
         headers: {
@@ -319,7 +310,7 @@ updateCarForm.addEventListener('submit', (e) => {
     if (errors.length > 0) {
         errorElement.innerText = errors.join('\n')
     } else {
-        fetch('http://localhost:5000/updatecar', {
+        fetch('/updatecar', {
 
             method: 'PUT',
             headers: {
@@ -384,7 +375,7 @@ updateCustomerForm.addEventListener('submit', (e) => {
     if (errors.length > 0) {
         errorElement.innerText = errors.join('\n')
     } else {
-        fetch('http://localhost:5000/updatecustomer', {
+        fetch('/updatecustomer', {
 
             method: 'PUT',
             headers: {
@@ -421,7 +412,7 @@ updateAdminForm.addEventListener('submit', (e) => {
         id: customerIdInput
     }
 
-    fetch('http://localhost:5000/updateadmin', {
+    fetch('/updateadmin', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

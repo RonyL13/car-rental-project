@@ -18,8 +18,3 @@ toggleCard = (selectedCard) => { // Argument passed is the card that was clicked
         }
     })
 }
-
-
-
-// card.children[1] is the answer div
-// card.children[0] is the answer div

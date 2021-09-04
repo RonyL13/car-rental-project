@@ -49,7 +49,7 @@ form.addEventListener('submit', (e) => {
         }
 
 
-        fetch('http://localhost:5000/register', {
+        fetch('/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -77,7 +77,7 @@ searchForm.addEventListener('submit', (e) => {
             info['params']["transmission"] = transmissionInput;
         }
 
-        fetch('http://localhost:5000/getsomecars/', {
+        fetch('/getsomecars/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -159,7 +159,7 @@ bookCar = (index, from, to) => {
         from: from,
         to: to
     }
-    fetch('http://localhost:5000/bookcar', {
+    fetch('/bookcar', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

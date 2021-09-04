@@ -1,4 +1,4 @@
-fetch('http://localhost:5000/getcustomerorders')
+fetch('/getcustomerorders')
 .then(response => response.json())
 .then(data => {
     let ordersContainer = document.querySelector('.ordersContainer');
@@ -31,7 +31,7 @@ fetch('http://localhost:5000/getcustomerorders')
 cancelOrder = (index) => {
     if (window.confirm('Are you sure?')) {
     let orderId = index.getAttribute('index');
-    fetch('http://localhost:5000/deleteorder', {
+    fetch('/deleteorder', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'

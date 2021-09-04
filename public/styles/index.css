@@ -100,7 +100,7 @@
 
 .booked {
     display: none;
-    padding: 1% 1% 0 1%; /* top | right | bottom | left */
+    padding: 1% 1% 0 1%;
     width: 25%;
     border: 1px gray solid;
 }
@@ -114,7 +114,7 @@
 .carComponent {
     display: block;
     width: 25%;
-    padding: 1% 1% 0 1%; /* top | right | bottom | left */
+    padding: 1% 1% 0 1%;
 }
 
 .availableInputsContainer {
@@ -191,9 +191,14 @@
 }
 
 @media (max-width: 800px) {
+
+    .body {
+        width: 100%;
+    }
     .mainContainer {
         background-position-x: 50%;
         padding-top: 5%;
+        width: 100%;
     }
 
     .carPictureContainer {
@@ -217,13 +222,23 @@
         margin-bottom: 0;
     }
 
+    .searchAndResultsContainer {
+        width: 100%;
+    }
     .searchFormContainer {
         display: flex;
         justify-content: center;
         flex-direction: column;
+        width: 100%;
     }
     .searchForm {
         flex-direction: column;
+    }
+    .labelPlusInputContainer {
+        width: 100%;
+    }
+    .labelPlusInputContainer select {
+        width: 100%;
     }
     .searchInputsContainer {
         flex-direction: column;

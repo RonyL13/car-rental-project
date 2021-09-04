@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const myRepository = require('../myRepository');
+const myRepository = require('../myrepository');
 const { authenticate, checkUser, isAdmin } = require('../middleware/authMiddleware');
 const path = require('path')
 
@@ -65,11 +65,6 @@ router.post('/addcar', isAdmin, async (req, res) => {
     const x = await myRepository.createCar(req.body);
     res.send(x)
 })
-
-// router.get('/getcars', async (req, res) => {
-//     const x = await myrepository.getAllCars();
-//     res.send(x)
-// })
 
 router.post('/getsomecars' , async (req, res) => {
     const x = await myRepository.getCarByFilters(req.body)

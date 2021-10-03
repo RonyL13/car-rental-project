@@ -9,13 +9,13 @@
 
 .columnContainers {
     float: left;
-    margin: 1% 0 0 5%; /* top | right | bottom | left */
+    margin: 1% 0 0 5%;
 }
 
 .columnContainers a{
     display: block;
-  text-decoration: none;
-  color: gray;
+    text-decoration: none;
+    color: gray;
 }
 
 .columnContainers h3 {
@@ -34,3 +34,4 @@
 .copyright {
     margin-top: 25%;
 }
+

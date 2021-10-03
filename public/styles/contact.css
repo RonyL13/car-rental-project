@@ -118,6 +118,9 @@
     .labelPlusInputContainer input{
         width: 135%;
     }
+    .labelPlusInputContainer input::placeholder{
+        font-size: 80%;
+    }
 
     .submitBtn {
         width: 100%;

@@ -1,3 +1,9 @@
+.header-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
 .imageContainer {
     background-image: url('../../views/images/blur-about-background.jpeg');
     background-repeat: no-repeat;
@@ -8,15 +14,18 @@
 }
 
 .imageFlavourText {
+    position: absolute;
+    top: 50%;
     text-align: center;
     color: white;
-    margin: -25% 0 25% 0 ;
 }
 
 .imageFlavourText img {
-    height: 4%;
-    width: 4%;
+    width: 10%;
+    height: 3rem;
 }
+
+
 
 .gallery {
     display: flex;

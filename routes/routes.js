@@ -21,7 +21,7 @@ router.get('/views/images/fadingbackground.png', (req, res) => {
 router.get('/views/images/fadingbackground1.png', (req, res) => {
     res.sendFile(path.join(__dirname+'/../views/images/fadingbackground1.png'))
 })
-router.get('/views/images/bluecar.png', (req, res) => {
+router.get('/images/bluecar.png', (req, res) => {
     res.sendFile(path.join(__dirname+'/../views/images/bluecar.png'))
 })
 router.get('/views/images/fadingbackground2.png', (req, res) => {

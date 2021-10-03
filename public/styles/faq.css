@@ -130,7 +130,12 @@ legend {
 
     .mainContainer {
         width: 100%;
+        padding: 3%;
         flex-direction: column;
+    }
+    fieldset {
+        margin-top: 2%;
+        margin-bottom: 2%;
     }
     .accordion {
         width: 100%;
@@ -142,9 +147,4 @@ legend {
     .assistance-line {
         padding: 3%;
     }
-
-    .footerContainer {
-        display: none;
-    }
-
 }

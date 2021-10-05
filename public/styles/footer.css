@@ -32,6 +32,18 @@
 }
 
 .copyright {
-    margin-top: 25%;
+    border: black 1px solid;
+    background-color: black;
+    color: gray;
+    padding-left: 5%;
 }
 
+@media (max-width: 800px) {
+    .columnContainers {
+        margin: 1% 0 0 5%;
+    }    
+
+    .copyright {
+        padding-left: 0;
+    }
+}

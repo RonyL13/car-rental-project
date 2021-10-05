@@ -204,9 +204,8 @@
    .mainContainerFlavourText {
        margin-top: 7.5%;
    }
-   .carPictureContainer {
+   .carPictureContainer img{
        width: 200%;
-       margin-left: -50%;
    }
 
    .searchInputsContainer {

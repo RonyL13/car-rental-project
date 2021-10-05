@@ -29,6 +29,10 @@
 .navbarRight a {
     padding: 8px 12px;
 }
+.navbarRight span {
+    color: #35aae9;
+    padding: 8px 12px;
+}
 
 @media (max-width: 800px) {
     .navbar {

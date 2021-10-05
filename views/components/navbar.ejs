@@ -10,7 +10,7 @@
         </div>
         <div class="navbarRight">
             <% if (customer) { %>
-                <a><%= customer.name %></a>
+                <span><%= customer.name %></span>
                 <% if (customer.admin) { %>
                     <a href="/office">Office</a>
                     <% } %>

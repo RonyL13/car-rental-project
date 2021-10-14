@@ -44,38 +44,6 @@ const carsSchema = new mongoose.Schema({
       type: Array,
       required: [true, 'Missing field: booking'],
       default: [],
-      // by: {
-      //    type: String,
-      //    required: [true, 'Missing field: (isBooked) by'],
-      //    default: null
-      // }
-      // from: {
-      //    type: Date,
-      //    required: ['true', 'missing field: from date'],
-      //    min: function () {
-      //       let today = new Date();
-      //       let dd = String(today.getDate()).padStart(2, '0');
-      //       let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-      //       let yyyy = today.getFullYear();
-
-      //       today = yyyy + '-' + mm + '-' + dd;
-      //       return today;
-      //    },
-      //    max: function () {
-
-      //       let twoMonthsFromToday = new Date();
-      //       let dd = String(twoMonthsFromToday.getDate()).padStart(2, '0');
-      //       let mm = String(twoMonthsFromToday.getMonth() + 3).padStart(2, '0'); //January is 0!
-      //       let yyyy = twoMonthsFromToday.getFullYear();
-
-      //       twoMonthsFromToday = yyyy + '-' + mm + '-' + dd;
-      //       return twoMonthsFromToday;
-      //    }
-      // },
-      // to: {
-      //    type: Date,
-      //    required: [true, 'Missing field: to date']
-      // }
    },
    timesBooked: {
       type: Number,
